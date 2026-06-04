@@ -446,11 +446,13 @@ export default function Index() {
               <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-x-8 gap-y-4 text-sm">
                 {[
                   { label: "Полное наименование", value: "ООО «Инновации ДВ»" },
-                  { label: "ИНН", value: "Уточняется" },
-                  { label: "КПП", value: "Уточняется" },
-                  { label: "ОГРН", value: "Уточняется" },
-                  { label: "Юридический адрес", value: "Уточняется" },
-                  { label: "Расчётный счёт", value: "Уточняется" },
+                  { label: "ОГРН", value: "1162536055880" },
+                  { label: "ИНН", value: "2543091244" },
+                  { label: "КПП", value: "254301001" },
+                  { label: "ОКПО", value: "00875023" },
+                  { label: "Дата регистрации", value: "3 марта 2016 года" },
+                  { label: "Вид деятельности", value: "Разработка компьютерного программного обеспечения (62.01)" },
+                  { label: "Юридический адрес", value: "690002, Приморский край, г. Владивосток, пр-кт Красного Знамени, д. 59, офис 505" },
                 ].map(req => (
                   <div key={req.label}>
                     <div className="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-1">{req.label}</div>
