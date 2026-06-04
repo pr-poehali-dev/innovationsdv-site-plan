@@ -613,6 +613,7 @@ export default function Index() {
                 { name: "Элемент ДВ", sub: "", logo: "https://cdn.poehali.dev/projects/dc952390-4837-45eb-b79b-467f972bc182/files/0e67bc59-5976-47a3-b564-69b8bb87dbaf.jpg" },
                 { name: "Битрикс24", sub: "", logo: "https://www.bitrix24.ru/bitrix/templates/bitrix24new_landing/img/logo_dark.svg" },
                 { name: "1С", sub: "", logo: "https://1c.ru/img/1c_logo.png" },
+                { name: "Техно-ДВ", sub: "", logo: "https://tehno-dv.ru/images/logos/8/LogoTehnoDV-55_1ekt-z6.png" },
               ].map((p, i) => (
                 <div
                   key={p.name}
