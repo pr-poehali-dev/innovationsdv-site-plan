@@ -604,7 +604,7 @@ export default function Index() {
               {[
                 { name: "Созвездие", sub: "Владивосток", logo: "https://www.szv.ru/images/logo.png" },
                 { name: "Клеверенс", sub: "", logo: "https://cdn.poehali.dev/projects/dc952390-4837-45eb-b79b-467f972bc182/files/9c3a870e-635c-4a3f-a5eb-b2ac075ae8c9.jpg" },
-                { name: "Моби-С", sub: "", logo: "https://cdn.poehali.dev/projects/dc952390-4837-45eb-b79b-467f972bc182/files/e694fecf-6f30-457b-9316-73b2c007673d.jpg" },
+                { name: "Моби-С", sub: "", logo: "https://mobi-c.ru/images/logo.png" },
                 { name: "ScanSoft", sub: "", logo: "https://cdn.poehali.dev/projects/dc952390-4837-45eb-b79b-467f972bc182/files/3fe1ded6-fd26-4a65-9d52-2afcdde27460.jpg" },
                 { name: "Элемент ДВ", sub: "", logo: "https://cdn.poehali.dev/projects/dc952390-4837-45eb-b79b-467f972bc182/files/0e67bc59-5976-47a3-b564-69b8bb87dbaf.jpg" },
               ].map((p, i) => (
