@@ -26,6 +26,7 @@ const T = {
     c1industry: "Ритейл", c1task: "Разрозненный учёт продаж в 12 магазинах", c1sol: "Внедрение единой ERP + кассовое оборудование", c1res: "−35% времени на инвентаризацию, +18% точность учёта",
     c2industry: "Производство", c2task: "Отсутствие сквозной аналитики по производству", c2sol: "BI-система + интеграция с 1С", c2res: "Сокращение потерь на 22%, прозрачность KPI в реальном времени",
     c3industry: "Оптовая торговля", c3task: "Хаотичная работа отдела продаж", c3sol: "Внедрение Битрикс24, автоматизация воронки", c3res: "+40% конверсия лидов, −2 часа ежедневной рутины",
+    c4industry: "Дистрибуция", c4task: "Торговые агенты принимали заказы вручную, данные поступали в офис с задержкой до 2 суток", c4sol: "Внедрение системы Агент+ с интеграцией Моби С и Сервис Точки", c4res: "Заказы поступают в режиме реального времени, дебиторская задолженность сократилась на 30%, маршруты оптимизированы",
     aboutTitle: "О компании", aboutDesc: "«Инновации ДВ» — системный интегратор и IT-партнёр для бизнеса на Дальнем Востоке. С 2014 года помогаем компаниям выстраивать эффективные цифровые процессы.",
     missionTitle: "Наша миссия", missionText: "Делать передовые IT-технологии доступными для любого бизнеса — от небольшой торговой точки до крупного производственного предприятия. Мы не просто поставляем решения: мы разбираемся в задачах клиента и предлагаем то, что реально работает.",
     m1: "Индивидуальный подход к каждому проекту", m2: "Прозрачные условия сотрудничества", m3: "Техническая поддержка после внедрения", m4: "Работаем по всему Дальневосточному региону",
@@ -61,6 +62,7 @@ const T = {
     c1industry: "Retail", c1task: "Fragmented sales tracking across 12 stores", c1sol: "Unified ERP implementation + cash register equipment", c1res: "−35% inventory time, +18% accounting accuracy",
     c2industry: "Manufacturing", c2task: "No end-to-end production analytics", c2sol: "BI system + 1C integration", c2res: "22% loss reduction, real-time KPI transparency",
     c3industry: "Wholesale", c3task: "Chaotic sales department workflow", c3sol: "Bitrix24 implementation, funnel automation", c3res: "+40% lead conversion, −2 hours daily routine",
+    c4industry: "Distribution", c4task: "Sales agents took orders manually, data reached the office with up to 2-day delays", c4sol: "Agent+ system implementation integrated with Mobi C and Service Points", c4res: "Orders processed in real time, accounts receivable reduced by 30%, routes optimized",
     aboutTitle: "About Us", aboutDesc: "Innovacii DV is a systems integrator and IT partner for businesses in the Russian Far East. Since 2014, we have been helping companies build efficient digital processes.",
     missionTitle: "Our Mission", missionText: "Making advanced IT technologies accessible to any business — from a small retail shop to a large manufacturing enterprise. We don't just deliver solutions: we understand the client's needs and offer what truly works.",
     m1: "Individual approach to each project", m2: "Transparent terms of cooperation", m3: "Technical support after implementation", m4: "Operating across the entire Far Eastern region",
@@ -96,6 +98,7 @@ const T = {
     c1industry: "零售", c1task: "12家门店的销售数据分散管理", c1sol: "统一ERP实施 + 收银设备", c1res: "库存时间减少35%，核算准确率提升18%",
     c2industry: "制造业", c2task: "缺乏贯穿生产全流程的分析", c2sol: "BI系统 + 1C集成", c2res: "损耗减少22%，KPI实时透明化",
     c3industry: "批发贸易", c3task: "销售部门工作混乱", c3sol: "Bitrix24实施，销售漏斗自动化", c3res: "线索转化率提升40%，每日节省2小时",
+    c4industry: "分销", c4task: "销售代理手动接单，数据传到办公室最长延迟2天", c4sol: "实施Агент+系统，集成Моби С和Сервис Точки", c4res: "订单实时处理，应收账款减少30%，路线优化",
     aboutTitle: "关于公司", aboutDesc: "«创新远东»是俄罗斯远东地区企业的系统集成商和IT合作伙伴。自2014年起，我们帮助企业构建高效的数字化流程。",
     missionTitle: "我们的使命", missionText: "让先进的IT技术惠及各类企业——从小型零售店到大型制造企业。我们不只是提供解决方案：我们深入了解客户需求，提供真正有效的方案。",
     m1: "针对每个项目的个性化方法", m2: "透明的合作条款", m3: "实施后的技术支持", m4: "服务覆盖整个远东地区",
@@ -212,6 +215,7 @@ export default function Index() {
     { industry: t.c1industry, task: t.c1task, solution: t.c1sol, result: t.c1res },
     { industry: t.c2industry, task: t.c2task, solution: t.c2sol, result: t.c2res },
     { industry: t.c3industry, task: t.c3task, solution: t.c3sol, result: t.c3res },
+    { industry: t.c4industry, task: t.c4task, solution: t.c4sol, result: t.c4res },
   ];
 
   return (
