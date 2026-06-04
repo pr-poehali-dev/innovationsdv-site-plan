@@ -600,13 +600,15 @@ export default function Index() {
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">{t.partnersTitle}</h2>
               <p className="text-gray-500 text-lg max-w-xl">{t.partnersDesc}</p>
             </div>
-            <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               {[
                 { name: "Созвездие", sub: "Владивосток", logo: "https://www.szv.ru/images/logo.png" },
                 { name: "Клеверенс", sub: "", logo: "https://cdn.poehali.dev/projects/dc952390-4837-45eb-b79b-467f972bc182/files/9c3a870e-635c-4a3f-a5eb-b2ac075ae8c9.jpg" },
                 { name: "Моби-С", sub: "", logo: "https://mobi-c.ru/images/logo.png" },
                 { name: "ScanSoft", sub: "", logo: "https://cdn.poehali.dev/projects/dc952390-4837-45eb-b79b-467f972bc182/files/3fe1ded6-fd26-4a65-9d52-2afcdde27460.jpg" },
                 { name: "Элемент ДВ", sub: "", logo: "https://cdn.poehali.dev/projects/dc952390-4837-45eb-b79b-467f972bc182/files/0e67bc59-5976-47a3-b564-69b8bb87dbaf.jpg" },
+                { name: "Битрикс24", sub: "", logo: "https://www.bitrix24.ru/bitrix/templates/bitrix24new_landing/img/logo_dark.svg" },
+                { name: "1С", sub: "", logo: "https://1c.ru/img/1c_logo.png" },
               ].map((p, i) => (
                 <div
                   key={p.name}
