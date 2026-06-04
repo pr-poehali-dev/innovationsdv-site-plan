@@ -27,6 +27,9 @@ const T = {
     c2industry: "Производство", c2task: "Отсутствие сквозной аналитики по производству", c2sol: "BI-система + интеграция с 1С", c2res: "Сокращение потерь на 22%, прозрачность KPI в реальном времени",
     c3industry: "Оптовая торговля", c3task: "Хаотичная работа отдела продаж", c3sol: "Внедрение Битрикс24, автоматизация воронки", c3res: "+40% конверсия лидов, −2 часа ежедневной рутины",
     c4industry: "Дистрибуция", c4task: "Торговые агенты принимали заказы вручную, данные поступали в офис с задержкой до 2 суток", c4sol: "Внедрение системы Агент+ с интеграцией Моби С и Сервис Точки", c4res: "Заказы поступают в режиме реального времени, дебиторская задолженность сократилась на 30%, маршруты оптимизированы",
+    c5industry: "Общепит", c5task: "Отсутствие маркировки и ветеринарного контроля при приёмке товаров", c5sol: "Подключение к системе Меркурий + автоматизация входящего контроля", c5res: "Полное соответствие требованиям Россельхознадзора, исключены штрафы",
+    c6industry: "Фармацевтика", c6task: "Ручная работа с маркировкой лекарств по системе ГИС МТ", c6sol: "Интеграция ГИС МТ с учётной системой, автоматизация сканирования DataMatrix", c6res: "Скорость приёмки выросла в 3 раза, исключены ошибки при списании",
+    c7industry: "Логистика", c7task: "Нет прозрачности по статусам грузов и маршрутам доставки", c7sol: "Внедрение транспортной TMS-системы с мобильным приложением для водителей", c7res: "100% онлайн-контроль доставок, затраты на топливо снижены на 18%",
     aboutTitle: "О компании", aboutDesc: "«Инновации ДВ» — системный интегратор и IT-партнёр для бизнеса на Дальнем Востоке. С 2014 года помогаем компаниям выстраивать эффективные цифровые процессы.",
     missionTitle: "Наша миссия", missionText: "Делать передовые IT-технологии доступными для любого бизнеса — от небольшой торговой точки до крупного производственного предприятия. Мы не просто поставляем решения: мы разбираемся в задачах клиента и предлагаем то, что реально работает.",
     m1: "Индивидуальный подход к каждому проекту", m2: "Прозрачные условия сотрудничества", m3: "Техническая поддержка после внедрения", m4: "Работаем по всему Дальневосточному региону",
@@ -63,6 +66,9 @@ const T = {
     c2industry: "Manufacturing", c2task: "No end-to-end production analytics", c2sol: "BI system + 1C integration", c2res: "22% loss reduction, real-time KPI transparency",
     c3industry: "Wholesale", c3task: "Chaotic sales department workflow", c3sol: "Bitrix24 implementation, funnel automation", c3res: "+40% lead conversion, −2 hours daily routine",
     c4industry: "Distribution", c4task: "Sales agents took orders manually, data reached the office with up to 2-day delays", c4sol: "Agent+ system implementation integrated with Mobi C and Service Points", c4res: "Orders processed in real time, accounts receivable reduced by 30%, routes optimized",
+    c5industry: "Food Service", c5task: "No labeling or veterinary control during goods receipt", c5sol: "Mercury system integration + automated incoming quality control", c5res: "Full compliance with Rosselkhoznadzor requirements, fines eliminated",
+    c6industry: "Pharmaceuticals", c6task: "Manual drug labeling via GIS MT system", c6sol: "GIS MT integration with accounting system, DataMatrix scanning automation", c6res: "Receiving speed tripled, write-off errors eliminated",
+    c7industry: "Logistics", c7task: "No visibility into cargo statuses and delivery routes", c7sol: "TMS transport system implementation with mobile app for drivers", c7res: "100% online delivery control, fuel costs reduced by 18%",
     aboutTitle: "About Us", aboutDesc: "Innovacii DV is a systems integrator and IT partner for businesses in the Russian Far East. Since 2014, we have been helping companies build efficient digital processes.",
     missionTitle: "Our Mission", missionText: "Making advanced IT technologies accessible to any business — from a small retail shop to a large manufacturing enterprise. We don't just deliver solutions: we understand the client's needs and offer what truly works.",
     m1: "Individual approach to each project", m2: "Transparent terms of cooperation", m3: "Technical support after implementation", m4: "Operating across the entire Far Eastern region",
@@ -99,6 +105,9 @@ const T = {
     c2industry: "制造业", c2task: "缺乏贯穿生产全流程的分析", c2sol: "BI系统 + 1C集成", c2res: "损耗减少22%，KPI实时透明化",
     c3industry: "批发贸易", c3task: "销售部门工作混乱", c3sol: "Bitrix24实施，销售漏斗自动化", c3res: "线索转化率提升40%，每日节省2小时",
     c4industry: "分销", c4task: "销售代理手动接单，数据传到办公室最长延迟2天", c4sol: "实施Агент+系统，集成Моби С和Сервис Точки", c4res: "订单实时处理，应收账款减少30%，路线优化",
+    c5industry: "餐饮", c5task: "收货时缺乏商品标识和兽医控制", c5sol: "接入Меркурий系统 + 自动化入库质检", c5res: "完全符合Россельхознадзор要求，罚款风险消除",
+    c6industry: "制药", c6task: "通过GIS МТ系统手动处理药品标签", c6sol: "GIS МТ与会计系统集成，DataMatrix扫描自动化", c6res: "收货速度提升3倍，报废错误消除",
+    c7industry: "物流", c7task: "货物状态和配送路线缺乏透明度", c7sol: "实施TMS运输系统及司机移动应用", c7res: "100%在线配送管控，燃油成本降低18%",
     aboutTitle: "关于公司", aboutDesc: "«创新远东»是俄罗斯远东地区企业的系统集成商和IT合作伙伴。自2014年起，我们帮助企业构建高效的数字化流程。",
     missionTitle: "我们的使命", missionText: "让先进的IT技术惠及各类企业——从小型零售店到大型制造企业。我们不只是提供解决方案：我们深入了解客户需求，提供真正有效的方案。",
     m1: "针对每个项目的个性化方法", m2: "透明的合作条款", m3: "实施后的技术支持", m4: "服务覆盖整个远东地区",
@@ -137,6 +146,17 @@ export default function Index() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [formData, setFormData] = useState({ name: "", phone: "", message: "" });
   const [formSent, setFormSent] = useState(false);
+  const [casesIdx, setCasesIdx] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
+
+  useEffect(() => { setCasesIdx(0); }, [lang]);
 
   const t = T[lang];
 
@@ -216,6 +236,9 @@ export default function Index() {
     { industry: t.c2industry, task: t.c2task, solution: t.c2sol, result: t.c2res },
     { industry: t.c3industry, task: t.c3task, solution: t.c3sol, result: t.c3res },
     { industry: t.c4industry, task: t.c4task, solution: t.c4sol, result: t.c4res },
+    { industry: t.c5industry, task: t.c5task, solution: t.c5sol, result: t.c5res },
+    { industry: t.c6industry, task: t.c6task, solution: t.c6sol, result: t.c6res },
+    { industry: t.c7industry, task: t.c7task, solution: t.c7sol, result: t.c7res },
   ];
 
   return (
@@ -413,32 +436,82 @@ export default function Index() {
       <section id="cases" className="py-24" style={{ background: "#f8f9fa" }}>
         <div className="max-w-6xl mx-auto px-6">
           <div ref={casesAnim.ref}>
-            <div className={`mb-14 opacity-0-init ${casesAnim.inView ? "animate-fade-in-up" : ""}`}>
+            <div className={`mb-10 opacity-0-init ${casesAnim.inView ? "animate-fade-in-up" : ""}`}>
               <div className="section-line" />
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">{t.casesTitle}</h2>
-              <p className="text-gray-500 text-lg max-w-xl">{t.casesDesc}</p>
-            </div>
-            <div className="grid md:grid-cols-3 gap-6">
-              {CASES.map((c, i) => (
-                <div key={c.industry} className={`bg-white border border-gray-200 rounded-lg p-7 opacity-0-init ${casesAnim.inView ? "animate-fade-in-up" : ""}`} style={{ animationDelay: `${0.1 + i * 0.12}s` }}>
-                  <span className="inline-block text-xs font-semibold px-3 py-1 rounded-full mb-5" style={{ background: "rgba(37,99,235,0.08)", color: "var(--brand-blue)" }}>
-                    {c.industry}
+              <div className="flex items-end justify-between gap-4 flex-wrap">
+                <div>
+                  <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">{t.casesTitle}</h2>
+                  <p className="text-gray-500 text-lg max-w-xl">{t.casesDesc}</p>
+                </div>
+                <div className="flex items-center gap-2 pb-1">
+                  <button
+                    onClick={() => setCasesIdx(i => Math.max(0, i - 1))}
+                    disabled={casesIdx === 0}
+                    className="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center transition-all hover:border-blue-500 hover:text-blue-600 disabled:opacity-30 disabled:cursor-not-allowed"
+                  >
+                    <Icon name="ChevronLeft" size={18} />
+                  </button>
+                  <span className="text-sm text-gray-400 font-medium min-w-[48px] text-center">
+                    {casesIdx + 1} / {isMobile ? CASES.length : CASES.length - 2}
                   </span>
-                  <div className="space-y-4 text-sm">
-                    <div>
-                      <span className="text-xs font-semibold uppercase tracking-wider text-gray-400">{t.caseTask}</span>
-                      <p className="mt-1 text-gray-700 leading-relaxed">{c.task}</p>
-                    </div>
-                    <div>
-                      <span className="text-xs font-semibold uppercase tracking-wider text-gray-400">{t.caseSolution}</span>
-                      <p className="mt-1 text-gray-700 leading-relaxed">{c.solution}</p>
-                    </div>
-                    <div className="pt-2 border-t border-gray-100">
-                      <span className="text-xs font-semibold uppercase tracking-wider text-gray-400">{t.caseResult}</span>
-                      <p className="mt-1 font-semibold text-blue-700 leading-relaxed">{c.result}</p>
+                  <button
+                    onClick={() => setCasesIdx(i => Math.min(isMobile ? CASES.length - 1 : CASES.length - 3, i + 1))}
+                    disabled={casesIdx === (isMobile ? CASES.length - 1 : CASES.length - 3)}
+                    className="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center transition-all hover:border-blue-500 hover:text-blue-600 disabled:opacity-30 disabled:cursor-not-allowed"
+                  >
+                    <Icon name="ChevronRight" size={18} />
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            {/* Slider */}
+            <div className="overflow-hidden">
+              <div
+                className="flex gap-6 transition-transform duration-500 ease-in-out"
+                style={{ transform: `translateX(calc(-${casesIdx} * (${isMobile ? "100% + 24px" : "33.333% + 8px"})))` }}
+              >
+                {CASES.map((c, i) => (
+                  <div
+                    key={c.industry + i}
+                    className="bg-white border border-gray-200 rounded-lg p-7 flex-shrink-0"
+                    style={{ width: isMobile ? "100%" : "calc(33.333% - 16px)" }}
+                  >
+                    <span className="inline-block text-xs font-semibold px-3 py-1 rounded-full mb-5" style={{ background: "rgba(37,99,235,0.08)", color: "var(--brand-blue)" }}>
+                      {c.industry}
+                    </span>
+                    <div className="space-y-4 text-sm">
+                      <div>
+                        <span className="text-xs font-semibold uppercase tracking-wider text-gray-400">{t.caseTask}</span>
+                        <p className="mt-1 text-gray-700 leading-relaxed">{c.task}</p>
+                      </div>
+                      <div>
+                        <span className="text-xs font-semibold uppercase tracking-wider text-gray-400">{t.caseSolution}</span>
+                        <p className="mt-1 text-gray-700 leading-relaxed">{c.solution}</p>
+                      </div>
+                      <div className="pt-2 border-t border-gray-100">
+                        <span className="text-xs font-semibold uppercase tracking-wider text-gray-400">{t.caseResult}</span>
+                        <p className="mt-1 font-semibold text-blue-700 leading-relaxed">{c.result}</p>
+                      </div>
                     </div>
                   </div>
-                </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Dots */}
+            <div className="flex justify-center gap-2 mt-8">
+              {CASES.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setCasesIdx(i)}
+                  className="rounded-full transition-all duration-300"
+                  style={{
+                    width: casesIdx === i ? "24px" : "8px",
+                    height: "8px",
+                    background: casesIdx === i ? "var(--brand-blue)" : "#d1d5db",
+                  }}
+                />
               ))}
             </div>
           </div>
