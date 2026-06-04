@@ -610,7 +610,7 @@ export default function Index() {
                 { name: "Клеверенс", desc: "ПО для складской автоматизации и маркировки на ТСД", logo: "https://cdn.poehali.dev/projects/dc952390-4837-45eb-b79b-467f972bc182/bucket/f6eaf21b-89f0-4fb0-88b4-afe3a1fe6c84.jpg" },
                 { name: "Моби-С", desc: "Мобильная торговля и автоматизация торговых представителей", logo: "https://mobi-c.ru/images/logo.png" },
                 { name: "ScanSoft", desc: "Мобильные решения для склада, магазина и маркировки", logo: "https://cdn.poehali.dev/projects/dc952390-4837-45eb-b79b-467f972bc182/bucket/477b5182-febb-4de9-aaec-c5f2d96c12bb.jpg" },
-                { name: "Элемент ДВ", desc: "Автоматизация торговли и общепита на Дальнем Востоке", logo: "https://cdn.poehali.dev/projects/dc952390-4837-45eb-b79b-467f972bc182/files/0e67bc59-5976-47a3-b564-69b8bb87dbaf.jpg" },
+
                 { name: "Битрикс24", desc: "CRM-система, корпоративный портал и управление задачами", logo: "https://cdn.poehali.dev/projects/dc952390-4837-45eb-b79b-467f972bc182/bucket/eee62951-8251-46d6-b59d-a99596247c54.png" },
                 { name: "1С", desc: "Платформа для автоматизации учёта, ERP и отраслевых решений", logo: "https://cdn.poehali.dev/projects/dc952390-4837-45eb-b79b-467f972bc182/bucket/0655e969-9685-40c9-b633-ffadc28cc658.jpg" },
                 { name: "Техно-ДВ", desc: "Кассовое и торговое оборудование для автоматизации бизнеса", logo: "https://tehno-dv.ru/images/logos/8/LogoTehnoDV-55_1ekt-z6.png" },
