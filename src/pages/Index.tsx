@@ -602,21 +602,19 @@ export default function Index() {
             </div>
             <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
               {[
-                { name: "Созвездие", sub: "Владивосток" },
-                { name: "Кливерен", sub: "" },
-                { name: "Моби С", sub: "" },
-                { name: "Скан Софт", sub: "" },
-                { name: "Элемент ДВ", sub: "" },
+                { name: "Созвездие", sub: "Владивосток", logo: "https://cdn.poehali.dev/projects/dc952390-4837-45eb-b79b-467f972bc182/files/b87ecea6-a1f1-4d72-94cb-2e624714206d.jpg" },
+                { name: "Клеверенс", sub: "", logo: "https://cdn.poehali.dev/projects/dc952390-4837-45eb-b79b-467f972bc182/files/9c3a870e-635c-4a3f-a5eb-b2ac075ae8c9.jpg" },
+                { name: "Моби-С", sub: "", logo: "https://cdn.poehali.dev/projects/dc952390-4837-45eb-b79b-467f972bc182/files/e694fecf-6f30-457b-9316-73b2c007673d.jpg" },
+                { name: "ScanSoft", sub: "", logo: "https://cdn.poehali.dev/projects/dc952390-4837-45eb-b79b-467f972bc182/files/3fe1ded6-fd26-4a65-9d52-2afcdde27460.jpg" },
+                { name: "Элемент ДВ", sub: "", logo: "https://cdn.poehali.dev/projects/dc952390-4837-45eb-b79b-467f972bc182/files/0e67bc59-5976-47a3-b564-69b8bb87dbaf.jpg" },
               ].map((p, i) => (
                 <div
                   key={p.name}
-                  className={`flex flex-col items-center justify-center text-center border border-gray-200 rounded-xl px-4 py-8 hover:border-blue-300 hover:shadow-sm transition-all opacity-0-init ${partnersAnim.inView ? "animate-fade-in-up" : ""}`}
+                  className={`flex flex-col items-center justify-center text-center border border-gray-200 rounded-xl px-4 py-6 hover:border-blue-300 hover:shadow-sm transition-all opacity-0-init ${partnersAnim.inView ? "animate-fade-in-up" : ""}`}
                   style={{ animationDelay: `${0.05 + i * 0.08}s` }}
                 >
-                  <div className="w-12 h-12 rounded-full flex items-center justify-center mb-3" style={{ background: "rgba(37,99,235,0.07)" }}>
-                    <Icon name="Handshake" size={22} className="text-blue-600" />
-                  </div>
-                  <span className="font-bold text-gray-900 text-sm leading-snug">{p.name}</span>
+                  <img src={p.logo} alt={p.name} className="h-14 w-full object-contain mb-3" />
+                  <span className="font-semibold text-gray-700 text-xs leading-snug">{p.name}</span>
                   {p.sub && <span className="text-xs text-gray-400 mt-0.5">{p.sub}</span>}
                 </div>
               ))}
