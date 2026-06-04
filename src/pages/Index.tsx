@@ -630,8 +630,8 @@ export default function Index() {
               </div>
               <div className={`space-y-6 opacity-0-init ${contactsAnim.inView ? "animate-fade-in-up delay-200" : ""}`}>
                 {[
-                  { icon: "Phone", label: t.cPhone, value: "+7 (000) 000-00-00" },
-                  { icon: "Mail", label: t.cEmail, value: "info@innovacii-dv.ru" },
+                  { icon: "Phone", label: t.cPhone, value: "+7 (924) 263-09-21, +7 (924) 327-07-08" },
+                  { icon: "Mail", label: t.cEmail, value: "office@intdv.ru" },
                   { icon: "MapPin", label: t.cAddress, value: lang === "ru" ? "г. Владивосток, пр-кт Красного Знамени, д. 59, офис 505" : lang === "en" ? "Vladivostok, Krasnogo Znameni Ave., 59, office 505" : "符拉迪沃斯托克，红旗大街59号，505室" },
                   { icon: "Clock", label: t.cHours, value: lang === "ru" ? "Пн–Пт, 09:00–18:00 (VLAT)" : lang === "en" ? "Mon–Fri, 09:00–18:00 (VLAT)" : "周一至周五，09:00–18:00 (VLAT)" },
                 ].map(contact => (
