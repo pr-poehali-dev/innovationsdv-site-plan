@@ -153,6 +153,8 @@ export default function Index() {
   const [formData, setFormData] = useState({ name: "", phone: "", message: "" });
   const [formSent, setFormSent] = useState(false);
   const [casesIdx, setCasesIdx] = useState(0);
+  const [partnersIdx, setPartnersIdx] = useState(0);
+  const [clientsIdx, setClientsIdx] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -604,32 +606,48 @@ export default function Index() {
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">{t.partnersTitle}</h2>
               <p className="text-gray-500 text-lg max-w-xl">{t.partnersDesc}</p>
             </div>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
-              {[
-                { name: "Созвездие", desc: "Консалтинг и автоматизация на базе 1С. Владивосток", logo: "https://www.szv.ru/images/logo.png" },
-                { name: "Клеверенс", desc: "ПО для складской автоматизации и маркировки на ТСД", logo: "https://cdn.poehali.dev/projects/dc952390-4837-45eb-b79b-467f972bc182/bucket/f6eaf21b-89f0-4fb0-88b4-afe3a1fe6c84.jpg" },
-                { name: "Моби-С", desc: "Мобильная торговля и автоматизация торговых представителей", logo: "https://mobi-c.ru/images/logo.png" },
-                { name: "ScanSoft", desc: "Мобильные решения для склада, магазина и маркировки", logo: "https://cdn.poehali.dev/projects/dc952390-4837-45eb-b79b-467f972bc182/bucket/477b5182-febb-4de9-aaec-c5f2d96c12bb.jpg" },
-
-                { name: "Битрикс24", desc: "CRM-система, корпоративный портал и управление задачами", logo: "https://cdn.poehali.dev/projects/dc952390-4837-45eb-b79b-467f972bc182/bucket/eee62951-8251-46d6-b59d-a99596247c54.png" },
-                { name: "1С", desc: "Платформа для автоматизации учёта, ERP и отраслевых решений", logo: "https://cdn.poehali.dev/projects/dc952390-4837-45eb-b79b-467f972bc182/bucket/0655e969-9685-40c9-b633-ffadc28cc658.jpg" },
-                { name: "Техно-ДВ", desc: "Кассовое и торговое оборудование для автоматизации бизнеса", logo: "https://tehno-dv.ru/images/logos/8/LogoTehnoDV-55_1ekt-z6.png" },
-              ].map((p, i) => (
-                <div
-                  key={p.name}
-                  className={`flex flex-col items-center text-center border border-gray-200 rounded-xl p-5 hover:border-blue-300 hover:shadow-sm transition-all opacity-0-init ${partnersAnim.inView ? "animate-fade-in-up" : ""}`}
-                  style={{ animationDelay: `${0.05 + i * 0.08}s` }}
-                >
-                  <div className="w-full h-16 flex items-center justify-center mb-4 flex-shrink-0">
-                    <img src={p.logo} alt={p.name} className="max-h-16 max-w-full object-contain" />
-                  </div>
-                  <div className="border-t border-gray-100 pt-3 w-full">
-                    <div className="font-bold text-gray-800 text-sm mb-1">{p.name}</div>
-                    <div className="text-xs text-gray-400 leading-relaxed">{p.desc}</div>
-                  </div>
-                </div>
-              ))}
-            </div>
+            {(() => {
+                const PARTNERS = [
+                  { name: "Созвездие", desc: "Консалтинг и автоматизация на базе 1С. Владивосток", logo: "https://www.szv.ru/images/logo.png" },
+                  { name: "Клеверенс", desc: "ПО для складской автоматизации и маркировки на ТСД", logo: "https://cdn.poehali.dev/projects/dc952390-4837-45eb-b79b-467f972bc182/bucket/f6eaf21b-89f0-4fb0-88b4-afe3a1fe6c84.jpg" },
+                  { name: "Моби-С", desc: "Мобильная торговля и автоматизация торговых представителей", logo: "https://mobi-c.ru/images/logo.png" },
+                  { name: "ScanSoft", desc: "Мобильные решения для склада, магазина и маркировки", logo: "https://cdn.poehali.dev/projects/dc952390-4837-45eb-b79b-467f972bc182/bucket/477b5182-febb-4de9-aaec-c5f2d96c12bb.jpg" },
+                  { name: "Битрикс24", desc: "CRM-система, корпоративный портал и управление задачами", logo: "https://cdn.poehali.dev/projects/dc952390-4837-45eb-b79b-467f972bc182/bucket/eee62951-8251-46d6-b59d-a99596247c54.png" },
+                  { name: "1С", desc: "Платформа для автоматизации учёта, ERP и отраслевых решений", logo: "https://cdn.poehali.dev/projects/dc952390-4837-45eb-b79b-467f972bc182/bucket/0655e969-9685-40c9-b633-ffadc28cc658.jpg" },
+                  { name: "Техно-ДВ", desc: "Кассовое и торговое оборудование для автоматизации бизнеса", logo: "https://tehno-dv.ru/images/logos/8/LogoTehnoDV-55_1ekt-z6.png" },
+                ];
+                const perPage = isMobile ? 1 : 3;
+                const maxIdx = Math.max(0, PARTNERS.length - perPage);
+                return (
+                  <>
+                    <div className="flex justify-end items-center gap-2 mb-5">
+                      <button onClick={() => setPartnersIdx(i => Math.max(0, i - 1))} disabled={partnersIdx === 0} className="w-9 h-9 rounded-full border border-gray-300 flex items-center justify-center transition-all hover:border-blue-500 hover:text-blue-600 disabled:opacity-30 disabled:cursor-not-allowed"><Icon name="ChevronLeft" size={16} /></button>
+                      <span className="text-sm text-gray-400 min-w-[40px] text-center">{partnersIdx + 1} / {maxIdx + 1}</span>
+                      <button onClick={() => setPartnersIdx(i => Math.min(maxIdx, i + 1))} disabled={partnersIdx === maxIdx} className="w-9 h-9 rounded-full border border-gray-300 flex items-center justify-center transition-all hover:border-blue-500 hover:text-blue-600 disabled:opacity-30 disabled:cursor-not-allowed"><Icon name="ChevronRight" size={16} /></button>
+                    </div>
+                    <div className="overflow-hidden">
+                      <div className="flex gap-5 transition-transform duration-500 ease-in-out" style={{ transform: `translateX(calc(-${partnersIdx} * (100% / ${perPage} + ${20 / perPage}px)))` }}>
+                        {PARTNERS.map((p) => (
+                          <div key={p.name} className="flex flex-col items-center text-center border border-gray-200 rounded-xl p-5 hover:border-blue-300 hover:shadow-sm transition-all flex-shrink-0 bg-white" style={{ width: `calc(${100 / perPage}% - ${20 * (perPage - 1) / perPage}px)` }}>
+                            <div className="w-full h-16 flex items-center justify-center mb-4 flex-shrink-0">
+                              <img src={p.logo} alt={p.name} className="max-h-16 max-w-full object-contain" />
+                            </div>
+                            <div className="border-t border-gray-100 pt-3 w-full">
+                              <div className="font-bold text-gray-800 text-sm mb-1">{p.name}</div>
+                              <div className="text-xs text-gray-400 leading-relaxed">{p.desc}</div>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                    <div className="flex justify-center gap-2 mt-6">
+                      {Array.from({ length: maxIdx + 1 }).map((_, i) => (
+                        <button key={i} onClick={() => setPartnersIdx(i)} className="rounded-full transition-all duration-300" style={{ width: partnersIdx === i ? "24px" : "8px", height: "8px", background: partnersIdx === i ? "var(--brand-blue)" : "#d1d5db" }} />
+                      ))}
+                    </div>
+                  </>
+                );
+              })()}
           </div>
         </div>
       </section>
@@ -643,33 +661,50 @@ export default function Index() {
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">{t.clientsTitle}</h2>
               <p className="text-gray-500 text-lg max-w-xl">{t.clientsDesc}</p>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {[
-                { name: "ООО ГК Движение", sphere: "Транспорт и логистика", logo: "https://cdn.poehali.dev/projects/dc952390-4837-45eb-b79b-467f972bc182/bucket/9e0c465b-c1ba-4420-a4a0-62d82850750c.jpg", bg: "" },
-                { name: "ООО ДК-Групп", sphere: "Оптовая торговля", logo: "https://dk-group.shop/templates/dkgroupoil/assets/img/logo.svg", bg: "#1a1a2e" },
-                { name: "ООО КосмоСити", sphere: "Оптовая торговля косметикой", logo: "https://cdn.poehali.dev/projects/dc952390-4837-45eb-b79b-467f972bc182/bucket/82849593-cc92-4959-9845-56937defc854.jpg", bg: "" },
-                { name: "Черчилль Тобакко", sphere: "Оптовая торговля табачной продукцией", logo: "https://cdn.poehali.dev/projects/dc952390-4837-45eb-b79b-467f972bc182/bucket/cca712a1-bbbd-4bee-bd74-1266bf3d060d.jpeg", bg: "" },
-                { name: "Хорольский молочный завод", sphere: "Производство молочной продукции", logo: "https://cdn.poehali.dev/projects/dc952390-4837-45eb-b79b-467f972bc182/bucket/a16e3313-563b-44f8-b503-d3dc90f87389.jpg", bg: "" },
-                { name: "Арсеньевский молочный комбинат", sphere: "Производство молочной продукции", logo: "https://static.tildacdn.com/tild6465-3762-4662-b834-386133323038/photo.png", bg: "" },
-              ].map((c, i) => (
-                <div
-                  key={c.name}
-                  className={`bg-white border border-gray-200 rounded-xl p-6 flex items-center gap-5 hover:shadow-md hover:border-blue-200 transition-all opacity-0-init ${clientsAnim.inView ? "animate-fade-in-up" : ""}`}
-                  style={{ animationDelay: `${0.1 + i * 0.1}s` }}
-                >
-                  <div className="w-16 h-16 rounded-lg border border-gray-100 flex-shrink-0 overflow-hidden flex items-center justify-center" style={{ background: c.bg || "#fff" }}>
-                    <img src={c.logo} alt={c.name} className="w-full h-full object-contain p-1" />
-                  </div>
-                  <div>
-                    <div className="font-bold text-gray-900 text-sm leading-snug">{c.name}</div>
-                    <div className="text-xs text-gray-400 mt-1 flex items-center gap-1.5">
-                      <span className="w-1.5 h-1.5 rounded-full inline-block flex-shrink-0" style={{ background: "var(--brand-blue)" }} />
-                      {c.sphere}
+            {(() => {
+                const CLIENTS = [
+                  { name: "ООО ГК Движение", sphere: "Транспорт и логистика", logo: "https://cdn.poehali.dev/projects/dc952390-4837-45eb-b79b-467f972bc182/bucket/9e0c465b-c1ba-4420-a4a0-62d82850750c.jpg", bg: "" },
+                  { name: "ООО ДК-Групп", sphere: "Оптовая торговля", logo: "https://dk-group.shop/templates/dkgroupoil/assets/img/logo.svg", bg: "#1a1a2e" },
+                  { name: "ООО КосмоСити", sphere: "Оптовая торговля косметикой", logo: "https://cdn.poehali.dev/projects/dc952390-4837-45eb-b79b-467f972bc182/bucket/82849593-cc92-4959-9845-56937defc854.jpg", bg: "" },
+                  { name: "Черчилль Тобакко", sphere: "Оптовая торговля табачной продукцией", logo: "https://cdn.poehali.dev/projects/dc952390-4837-45eb-b79b-467f972bc182/bucket/cca712a1-bbbd-4bee-bd74-1266bf3d060d.jpeg", bg: "" },
+                  { name: "Хорольский молочный завод", sphere: "Производство молочной продукции", logo: "https://cdn.poehali.dev/projects/dc952390-4837-45eb-b79b-467f972bc182/bucket/a16e3313-563b-44f8-b503-d3dc90f87389.jpg", bg: "" },
+                  { name: "Арсеньевский молочный комбинат", sphere: "Производство молочной продукции", logo: "https://static.tildacdn.com/tild6465-3762-4662-b834-386133323038/photo.png", bg: "" },
+                ];
+                const perPage = isMobile ? 1 : 3;
+                const maxIdx = Math.max(0, CLIENTS.length - perPage);
+                return (
+                  <>
+                    <div className="flex justify-end items-center gap-2 mb-5">
+                      <button onClick={() => setClientsIdx(i => Math.max(0, i - 1))} disabled={clientsIdx === 0} className="w-9 h-9 rounded-full border border-gray-300 flex items-center justify-center transition-all hover:border-blue-500 hover:text-blue-600 disabled:opacity-30 disabled:cursor-not-allowed"><Icon name="ChevronLeft" size={16} /></button>
+                      <span className="text-sm text-gray-400 min-w-[40px] text-center">{clientsIdx + 1} / {maxIdx + 1}</span>
+                      <button onClick={() => setClientsIdx(i => Math.min(maxIdx, i + 1))} disabled={clientsIdx === maxIdx} className="w-9 h-9 rounded-full border border-gray-300 flex items-center justify-center transition-all hover:border-blue-500 hover:text-blue-600 disabled:opacity-30 disabled:cursor-not-allowed"><Icon name="ChevronRight" size={16} /></button>
                     </div>
-                  </div>
-                </div>
-              ))}
-            </div>
+                    <div className="overflow-hidden">
+                      <div className="flex gap-5 transition-transform duration-500 ease-in-out" style={{ transform: `translateX(calc(-${clientsIdx} * (100% / ${perPage} + ${20 / perPage}px)))` }}>
+                        {CLIENTS.map((c) => (
+                          <div key={c.name} className="bg-white border border-gray-200 rounded-xl p-6 flex items-center gap-5 hover:shadow-md hover:border-blue-200 transition-all flex-shrink-0" style={{ width: `calc(${100 / perPage}% - ${20 * (perPage - 1) / perPage}px)` }}>
+                            <div className="w-16 h-16 rounded-lg border border-gray-100 flex-shrink-0 overflow-hidden flex items-center justify-center" style={{ background: c.bg || "#fff" }}>
+                              <img src={c.logo} alt={c.name} className="w-full h-full object-contain p-1" />
+                            </div>
+                            <div>
+                              <div className="font-bold text-gray-900 text-sm leading-snug">{c.name}</div>
+                              <div className="text-xs text-gray-400 mt-1 flex items-center gap-1.5">
+                                <span className="w-1.5 h-1.5 rounded-full inline-block flex-shrink-0" style={{ background: "var(--brand-blue)" }} />
+                                {c.sphere}
+                              </div>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                    <div className="flex justify-center gap-2 mt-6">
+                      {Array.from({ length: maxIdx + 1 }).map((_, i) => (
+                        <button key={i} onClick={() => setClientsIdx(i)} className="rounded-full transition-all duration-300" style={{ width: clientsIdx === i ? "24px" : "8px", height: "8px", background: clientsIdx === i ? "var(--brand-blue)" : "#d1d5db" }} />
+                      ))}
+                    </div>
+                  </>
+                );
+              })()}
           </div>
         </div>
       </section>
