@@ -641,7 +641,7 @@ export default function Index() {
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {[
-                { name: "ООО ГК Движение", sphere: "Транспорт и логистика", logo: "https://cdn.poehali.dev/projects/dc952390-4837-45eb-b79b-467f972bc182/files/65146d3d-89a9-4855-8ef0-d0d546ee6018.jpg", bg: "" },
+                { name: "ООО ГК Движение", sphere: "Транспорт и логистика", logo: "https://cdn.poehali.dev/projects/dc952390-4837-45eb-b79b-467f972bc182/bucket/9e0c465b-c1ba-4420-a4a0-62d82850750c.jpg", bg: "" },
                 { name: "ООО ДК-Групп", sphere: "Оптовая торговля", logo: "https://dk-group.shop/templates/dkgroupoil/assets/img/logo.svg", bg: "#1a1a2e" },
                 { name: "ООО КосмоСити", sphere: "Оптовая торговля косметикой", logo: "https://cdn.poehali.dev/projects/dc952390-4837-45eb-b79b-467f972bc182/files/43d691ad-4dd5-4655-b808-a7d7f8e08b20.jpg", bg: "" },
                 { name: "Черчилль Тобакко", sphere: "Оптовая торговля табачной продукцией", logo: "https://cdn.poehali.dev/projects/dc952390-4837-45eb-b79b-467f972bc182/files/987bcc70-f657-4669-a0ce-cea0ffbafad4.jpg", bg: "" },
