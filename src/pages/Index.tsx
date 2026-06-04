@@ -641,16 +641,16 @@ export default function Index() {
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
               {[
-                { name: "ООО ГК Движение", sphere: "Транспорт и логистика", logo: "https://cdn.poehali.dev/projects/dc952390-4837-45eb-b79b-467f972bc182/files/ee49d881-7424-4403-ab75-74be8a1a71ea.jpg" },
-                { name: "ООО ДК-Групп", sphere: "Оптовая торговля", logo: "https://cdn.poehali.dev/projects/dc952390-4837-45eb-b79b-467f972bc182/files/df22a920-6959-4663-919e-391267bef15e.jpg" },
-                { name: "ООО КосмоСити", sphere: "Розничная торговля", logo: "https://cdn.poehali.dev/projects/dc952390-4837-45eb-b79b-467f972bc182/files/6fe2b0ee-e2c0-4635-8f37-6334e5e59db2.jpg" },
+                { name: "ООО ГК Движение", sphere: "Транспорт и логистика", logo: "https://cdn.poehali.dev/projects/dc952390-4837-45eb-b79b-467f972bc182/files/65146d3d-89a9-4855-8ef0-d0d546ee6018.jpg", bg: "" },
+                { name: "ООО ДК-Групп", sphere: "Оптовая торговля", logo: "https://dk-group.shop/templates/dkgroupoil/assets/img/logo.svg", bg: "#1a1a2e" },
+                { name: "ООО КосмоСити", sphere: "Оптовая торговля косметикой", logo: "https://cdn.poehali.dev/projects/dc952390-4837-45eb-b79b-467f972bc182/files/43d691ad-4dd5-4655-b808-a7d7f8e08b20.jpg", bg: "" },
               ].map((c, i) => (
                 <div
                   key={c.name}
                   className={`bg-white border border-gray-200 rounded-xl p-6 flex items-center gap-5 hover:shadow-md hover:border-blue-200 transition-all opacity-0-init ${clientsAnim.inView ? "animate-fade-in-up" : ""}`}
                   style={{ animationDelay: `${0.1 + i * 0.1}s` }}
                 >
-                  <div className="w-16 h-16 rounded-lg border border-gray-100 flex-shrink-0 overflow-hidden bg-white flex items-center justify-center">
+                  <div className="w-16 h-16 rounded-lg border border-gray-100 flex-shrink-0 overflow-hidden flex items-center justify-center" style={{ background: c.bg || "#fff" }}>
                     <img src={c.logo} alt={c.name} className="w-full h-full object-contain p-1" />
                   </div>
                   <div>
