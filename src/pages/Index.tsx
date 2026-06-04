@@ -1,85 +1,110 @@
 import { useState, useEffect, useRef } from "react";
 import Icon from "@/components/ui/icon";
 
-const NAV_LINKS = [
-  { label: "Главная", href: "#home" },
-  { label: "Услуги", href: "#services" },
-  { label: "О компании", href: "#about" },
-  { label: "Контакты", href: "#contacts" },
-];
+type Lang = "ru" | "en" | "zh";
 
-const SERVICES = [
-  {
-    icon: "LayoutDashboard",
-    title: "Комплексные решения",
-    desc: "Стратегия цифровизации, аудит бизнес-процессов и подбор IT-систем под задачи вашей компании.",
-    items: ["Стратегия цифровизации", "Аудит бизнес-процессов", "Интеграция IT-систем"],
+const T = {
+  ru: {
+    navHome: "Главная", navServices: "Услуги", navAbout: "О компании", navContacts: "Контакты",
+    cta: "Получить консультацию",
+    heroBadge: "IT-компания Дальнего Востока",
+    heroTitle1: "Автоматизируем бизнес,",
+    heroTitle2: "освобождаем время",
+    heroDesc: "Комплексные IT-решения для производственных, торговых и сервисных компаний. Внедряем CRM/ERP, поставляем оборудование, строим аналитику — под ключ.",
+    heroBtn2: "Наши услуги",
+    adv1: "лет на рынке IT", adv2: "реализованных проектов", adv3: "постоянных клиентов", adv4: "техническая поддержка",
+    servicesTitle: "Направления деятельности",
+    servicesDesc: "Комплексный подход к цифровизации бизнеса — от стратегии до технической поддержки.",
+    s1title: "Комплексные решения", s1desc: "Стратегия цифровизации, аудит бизнес-процессов и подбор IT-систем под задачи вашей компании.", s1i1: "Стратегия цифровизации", s1i2: "Аудит бизнес-процессов", s1i3: "Интеграция IT-систем",
+    s2title: "Автоматизация бизнеса", s2desc: "Внедрение CRM и ERP-систем, автоматизация документооборота и складского учёта.", s2i1: "CRM: Битрикс24, amoCRM", s2i2: "ERP-системы", s2i3: "Автоматизация склада (WMS)",
+    s3title: "Оборудование и ПО", s3desc: "Поставки кассового и торгового оборудования, лицензионного программного обеспечения.", s3i1: "Онлайн-кассы и ФН", s3i2: "Сканеры, ТСД, принтеры", s3i3: "Лицензионное ПО",
+    s4title: "Системы аналитики", s4desc: "Настройка BI-систем, сквозная аналитика, дашборды и отчёты для принятия решений.", s4i1: "BI-системы", s4i2: "Сквозная аналитика", s4i3: "Дашборды для руководства",
+    casesTitle: "Реализованные проекты", casesDesc: "Измеримые результаты для наших клиентов.",
+    caseTask: "Задача", caseSolution: "Решение", caseResult: "Результат",
+    c1industry: "Ритейл", c1task: "Разрозненный учёт продаж в 12 магазинах", c1sol: "Внедрение единой ERP + кассовое оборудование", c1res: "−35% времени на инвентаризацию, +18% точность учёта",
+    c2industry: "Производство", c2task: "Отсутствие сквозной аналитики по производству", c2sol: "BI-система + интеграция с 1С", c2res: "Сокращение потерь на 22%, прозрачность KPI в реальном времени",
+    c3industry: "Оптовая торговля", c3task: "Хаотичная работа отдела продаж", c3sol: "Внедрение Битрикс24, автоматизация воронки", c3res: "+40% конверсия лидов, −2 часа ежедневной рутины",
+    aboutTitle: "О компании", aboutDesc: "«Инновации ДВ» — системный интегратор и IT-партнёр для бизнеса на Дальнем Востоке. С 2014 года помогаем компаниям выстраивать эффективные цифровые процессы.",
+    missionTitle: "Наша миссия", missionText: "Делать передовые IT-технологии доступными для любого бизнеса — от небольшой торговой точки до крупного производственного предприятия. Мы не просто поставляем решения: мы разбираемся в задачах клиента и предлагаем то, что реально работает.",
+    m1: "Индивидуальный подход к каждому проекту", m2: "Прозрачные условия сотрудничества", m3: "Техническая поддержка после внедрения", m4: "Работаем по всему Дальневосточному региону",
+    teamTitle: "Команда",
+    role1: "Генеральный директор", role2: "Руководитель проектов", role3: "Технический директор",
+    exp3: "Архитектура корпоративных систем",
+    reqTitle: "Реквизиты организации",
+    reqName: "Полное наименование", reqOgrn: "ОГРН", reqInn: "ИНН", reqKpp: "КПП", reqOkpo: "ОКПО", reqDate: "Дата регистрации", reqActivity: "Вид деятельности", reqAddress: "Юридический адрес",
+    contactsTitle: "Свяжитесь с нами", contactsDesc: "Оставьте заявку — ответим в течение рабочего часа.",
+    formName: "Ваше имя", formPhone: "Телефон", formMsg: "Сообщение", formMsgPh: "Опишите вашу задачу...", formBtn: "Отправить заявку", formPolicy: "Нажимая кнопку, вы соглашаетесь с политикой конфиденциальности",
+    formSuccessTitle: "Заявка отправлена!", formSuccessDesc: "Мы свяжемся с вами в течение рабочего часа.", formAgain: "Отправить ещё",
+    cPhone: "Телефон", cEmail: "Email", cAddress: "Адрес", cHours: "Режим работы",
+    footer: "© 2024 ООО «Инновации ДВ». Все права защищены.",
   },
-  {
-    icon: "Zap",
-    title: "Автоматизация бизнеса",
-    desc: "Внедрение CRM и ERP-систем, автоматизация документооборота и складского учёта.",
-    items: ["CRM: Битрикс24, amoCRM", "ERP-системы", "Автоматизация склада (WMS)"],
+  en: {
+    navHome: "Home", navServices: "Services", navAbout: "About", navContacts: "Contacts",
+    cta: "Get a Consultation",
+    heroBadge: "IT Company of the Far East",
+    heroTitle1: "We automate business,",
+    heroTitle2: "we free up your time",
+    heroDesc: "Comprehensive IT solutions for manufacturing, trading and service companies. We implement CRM/ERP, supply equipment, build analytics — turnkey.",
+    heroBtn2: "Our Services",
+    adv1: "years in IT market", adv2: "completed projects", adv3: "regular clients", adv4: "technical support",
+    servicesTitle: "Our Services", servicesDesc: "A comprehensive approach to business digitalization — from strategy to technical support.",
+    s1title: "Comprehensive Solutions", s1desc: "Digitalization strategy, business process audit and selection of IT systems for your company.", s1i1: "Digitalization Strategy", s1i2: "Business Process Audit", s1i3: "IT Systems Integration",
+    s2title: "Business Automation", s2desc: "CRM and ERP system implementation, document workflow and warehouse management automation.", s2i1: "CRM: Bitrix24, amoCRM", s2i2: "ERP Systems", s2i3: "Warehouse Automation (WMS)",
+    s3title: "Equipment & Software", s3desc: "Supply of cash register and retail equipment, licensed software.", s3i1: "Online Cash Registers", s3i2: "Scanners, TSD, Label Printers", s3i3: "Licensed Software",
+    s4title: "Analytics Systems", s4desc: "BI system setup, end-to-end analytics, dashboards and reports for management.", s4i1: "BI Systems", s4i2: "End-to-End Analytics", s4i3: "Management Dashboards",
+    casesTitle: "Completed Projects", casesDesc: "Measurable results for our clients.",
+    caseTask: "Challenge", caseSolution: "Solution", caseResult: "Result",
+    c1industry: "Retail", c1task: "Fragmented sales tracking across 12 stores", c1sol: "Unified ERP implementation + cash register equipment", c1res: "−35% inventory time, +18% accounting accuracy",
+    c2industry: "Manufacturing", c2task: "No end-to-end production analytics", c2sol: "BI system + 1C integration", c2res: "22% loss reduction, real-time KPI transparency",
+    c3industry: "Wholesale", c3task: "Chaotic sales department workflow", c3sol: "Bitrix24 implementation, funnel automation", c3res: "+40% lead conversion, −2 hours daily routine",
+    aboutTitle: "About Us", aboutDesc: "Innovacii DV is a systems integrator and IT partner for businesses in the Russian Far East. Since 2014, we have been helping companies build efficient digital processes.",
+    missionTitle: "Our Mission", missionText: "Making advanced IT technologies accessible to any business — from a small retail shop to a large manufacturing enterprise. We don't just deliver solutions: we understand the client's needs and offer what truly works.",
+    m1: "Individual approach to each project", m2: "Transparent terms of cooperation", m3: "Technical support after implementation", m4: "Operating across the entire Far Eastern region",
+    teamTitle: "Our Team",
+    role1: "CEO", role2: "Project Manager", role3: "CTO",
+    exp3: "Corporate systems architecture",
+    reqTitle: "Company Details",
+    reqName: "Full Name", reqOgrn: "OGRN", reqInn: "INN (Tax ID)", reqKpp: "KPP", reqOkpo: "OKPO", reqDate: "Registration Date", reqActivity: "Business Activity", reqAddress: "Legal Address",
+    contactsTitle: "Contact Us", contactsDesc: "Leave a request — we will respond within one business hour.",
+    formName: "Your Name", formPhone: "Phone", formMsg: "Message", formMsgPh: "Describe your task...", formBtn: "Send Request", formPolicy: "By clicking the button, you agree to the privacy policy",
+    formSuccessTitle: "Request Sent!", formSuccessDesc: "We will contact you within one business hour.", formAgain: "Send Another",
+    cPhone: "Phone", cEmail: "Email", cAddress: "Address", cHours: "Working Hours",
+    footer: "© 2024 Innovacii DV LLC. All rights reserved.",
   },
-  {
-    icon: "Monitor",
-    title: "Оборудование и ПО",
-    desc: "Поставки кассового и торгового оборудования, лицензионного программного обеспечения.",
-    items: ["Онлайн-кассы и ФН", "Сканеры, ТСД, принтеры", "Лицензионное ПО"],
+  zh: {
+    navHome: "首页", navServices: "服务", navAbout: "关于我们", navContacts: "联系我们",
+    cta: "获取咨询",
+    heroBadge: "远东IT公司",
+    heroTitle1: "业务自动化，",
+    heroTitle2: "释放您的时间",
+    heroDesc: "为制造业、贸易和服务企业提供综合IT解决方案。我们实施CRM/ERP，供应设备，构建分析系统——交钥匙工程。",
+    heroBtn2: "我们的服务",
+    adv1: "年IT市场经验", adv2: "已完成项目", adv3: "固定客户", adv4: "技术支持",
+    servicesTitle: "服务方向", servicesDesc: "全面的业务数字化方法——从战略到技术支持。",
+    s1title: "综合解决方案", s1desc: "数字化战略、业务流程审计和IT系统选型，针对贵公司的具体任务。", s1i1: "数字化战略", s1i2: "业务流程审计", s1i3: "IT系统集成",
+    s2title: "业务自动化", s2desc: "CRM和ERP系统实施，文档流程和仓库管理自动化。", s2i1: "CRM: Bitrix24, amoCRM", s2i2: "ERP系统", s2i3: "仓库自动化 (WMS)",
+    s3title: "设备与软件", s3desc: "收银设备、零售设备及正版软件的供应。", s3i1: "在线收银机", s3i2: "扫描仪、数据采集器、标签打印机", s3i3: "正版软件",
+    s4title: "分析系统", s4desc: "BI系统配置、端到端分析、管理层仪表板和报告。", s4i1: "BI系统", s4i2: "端到端分析", s4i3: "管理层仪表板",
+    casesTitle: "已完成项目", casesDesc: "为客户带来可量化的成果。",
+    caseTask: "任务", caseSolution: "解决方案", caseResult: "成果",
+    c1industry: "零售", c1task: "12家门店的销售数据分散管理", c1sol: "统一ERP实施 + 收银设备", c1res: "库存时间减少35%，核算准确率提升18%",
+    c2industry: "制造业", c2task: "缺乏贯穿生产全流程的分析", c2sol: "BI系统 + 1C集成", c2res: "损耗减少22%，KPI实时透明化",
+    c3industry: "批发贸易", c3task: "销售部门工作混乱", c3sol: "Bitrix24实施，销售漏斗自动化", c3res: "线索转化率提升40%，每日节省2小时",
+    aboutTitle: "关于公司", aboutDesc: "«创新远东»是俄罗斯远东地区企业的系统集成商和IT合作伙伴。自2014年起，我们帮助企业构建高效的数字化流程。",
+    missionTitle: "我们的使命", missionText: "让先进的IT技术惠及各类企业——从小型零售店到大型制造企业。我们不只是提供解决方案：我们深入了解客户需求，提供真正有效的方案。",
+    m1: "针对每个项目的个性化方法", m2: "透明的合作条款", m3: "实施后的技术支持", m4: "服务覆盖整个远东地区",
+    teamTitle: "团队",
+    role1: "总经理", role2: "项目经理", role3: "技术总监",
+    exp3: "企业系统架构",
+    reqTitle: "公司信息",
+    reqName: "全称", reqOgrn: "ОГРН（统一国家法人注册号）", reqInn: "ИНН（纳税人识别号）", reqKpp: "КПП", reqOkpo: "ОКПО", reqDate: "注册日期", reqActivity: "业务活动", reqAddress: "法定地址",
+    contactsTitle: "联系我们", contactsDesc: "提交申请——我们将在一个工作小时内回复。",
+    formName: "您的姓名", formPhone: "电话", formMsg: "留言", formMsgPh: "请描述您的需求...", formBtn: "提交申请", formPolicy: "点击按钮即表示您同意隐私政策",
+    formSuccessTitle: "申请已发送！", formSuccessDesc: "我们将在一个工作小时内与您联系。", formAgain: "再次发送",
+    cPhone: "电话", cEmail: "电子邮件", cAddress: "地址", cHours: "工作时间",
+    footer: "© 2024 «创新远东»有限责任公司。保留所有权利。",
   },
-  {
-    icon: "BarChart3",
-    title: "Системы аналитики",
-    desc: "Настройка BI-систем, сквозная аналитика, дашборды и отчёты для принятия решений.",
-    items: ["BI-системы", "Сквозная аналитика", "Дашборды для руководства"],
-  },
-];
-
-const ADVANTAGES = [
-  { icon: "Award", num: "10+", label: "лет на рынке IT" },
-  { icon: "Briefcase", num: "200+", label: "реализованных проектов" },
-  { icon: "Users", num: "150+", label: "постоянных клиентов" },
-  { icon: "Headphones", num: "24/7", label: "техническая поддержка" },
-];
-
-const TEAM = [
-  {
-    name: "Коваль Антон Геннадьевич",
-    role: "Генеральный директор",
-    exp: "20 лет в IT-отрасли",
-  },
-  {
-    name: "Абаимов Вячеслав Вячеславович",
-    role: "Руководитель проектов",
-    exp: "Эксперт по внедрению ГИС МТ, ЭДО, Меркурий",
-  },
-  {
-    name: "Дмитрий Ким",
-    role: "Технический директор",
-    exp: "Архитектура корпоративных систем",
-  },
-];
-
-const CASES = [
-  {
-    industry: "Ритейл",
-    task: "Разрозненный учёт продаж в 12 магазинах",
-    solution: "Внедрение единой ERP + кассовое оборудование",
-    result: "−35% времени на инвентаризацию, +18% точность учёта",
-  },
-  {
-    industry: "Производство",
-    task: "Отсутствие сквозной аналитики по производству",
-    solution: "BI-система + интеграция с 1С",
-    result: "Сокращение потерь на 22%, прозрачность KPI в реальном времени",
-  },
-  {
-    industry: "Оптовая торговля",
-    task: "Хаотичная работа отдела продаж",
-    solution: "Внедрение Битрикс24, автоматизация воронки",
-    result: "+40% конверсия лидов, −2 часа ежедневной рутины",
-  },
-];
+};
 
 function useInView(threshold = 0.15) {
   const ref = useRef<HTMLDivElement>(null);
@@ -98,10 +123,20 @@ function useInView(threshold = 0.15) {
 }
 
 export default function Index() {
+  const [lang, setLang] = useState<Lang>("ru");
   const [activeSection, setActiveSection] = useState("home");
   const [menuOpen, setMenuOpen] = useState(false);
   const [formData, setFormData] = useState({ name: "", phone: "", message: "" });
   const [formSent, setFormSent] = useState(false);
+
+  const t = T[lang];
+
+  const NAV_LINKS = [
+    { label: t.navHome, href: "#home" },
+    { label: t.navServices, href: "#services" },
+    { label: t.navAbout, href: "#about" },
+    { label: t.navContacts, href: "#contacts" },
+  ];
 
   const heroAnim = useInView(0.1);
   const servicesAnim = useInView(0.1);
@@ -139,6 +174,38 @@ export default function Index() {
     setFormSent(true);
   };
 
+  const LANGS: { code: Lang; label: string }[] = [
+    { code: "ru", label: "RU" },
+    { code: "en", label: "EN" },
+    { code: "zh", label: "中文" },
+  ];
+
+  const SERVICES = [
+    { icon: "LayoutDashboard", title: t.s1title, desc: t.s1desc, items: [t.s1i1, t.s1i2, t.s1i3] },
+    { icon: "Zap", title: t.s2title, desc: t.s2desc, items: [t.s2i1, t.s2i2, t.s2i3] },
+    { icon: "Monitor", title: t.s3title, desc: t.s3desc, items: [t.s3i1, t.s3i2, t.s3i3] },
+    { icon: "BarChart3", title: t.s4title, desc: t.s4desc, items: [t.s4i1, t.s4i2, t.s4i3] },
+  ];
+
+  const ADVANTAGES = [
+    { icon: "Award", num: "10+", label: t.adv1 },
+    { icon: "Briefcase", num: "200+", label: t.adv2 },
+    { icon: "Users", num: "150+", label: t.adv3 },
+    { icon: "Headphones", num: "24/7", label: t.adv4 },
+  ];
+
+  const TEAM = [
+    { name: "Коваль Антон Геннадьевич", role: t.role1, exp: "20 " + (lang === "ru" ? "лет в IT-отрасли" : lang === "en" ? "years in IT" : "年IT行业经验") },
+    { name: "Абаимов Вячеслав Вячеславович", role: t.role2, exp: lang === "ru" ? "Эксперт по внедрению ГИС МТ, ЭДО, Меркурий" : lang === "en" ? "Expert in GIS MT, EDO, Mercury implementation" : "GIS MT、EDO、Mercury实施专家" },
+    { name: "Дмитрий Ким", role: t.role3, exp: t.exp3 },
+  ];
+
+  const CASES = [
+    { industry: t.c1industry, task: t.c1task, solution: t.c1sol, result: t.c1res },
+    { industry: t.c2industry, task: t.c2task, solution: t.c2sol, result: t.c2res },
+    { industry: t.c3industry, task: t.c3task, solution: t.c3sol, result: t.c3res },
+  ];
+
   return (
     <div className="min-h-screen bg-white" style={{ fontFamily: "'Golos Text', sans-serif" }}>
 
@@ -168,13 +235,31 @@ export default function Index() {
             ))}
           </nav>
 
-          <button
-            onClick={() => scrollTo("#contacts")}
-            className="hidden md:block text-sm font-semibold px-5 py-2 rounded text-white transition-all hover:opacity-90 active:scale-95"
-            style={{ background: "var(--brand-steel)" }}
-          >
-            Получить консультацию
-          </button>
+          <div className="hidden md:flex items-center gap-3">
+            {/* Lang switcher */}
+            <div className="flex items-center border border-gray-200 rounded overflow-hidden">
+              {LANGS.map((l, i) => (
+                <button
+                  key={l.code}
+                  onClick={() => setLang(l.code)}
+                  className={`px-2.5 py-1 text-xs font-semibold transition-colors ${
+                    lang === l.code
+                      ? "bg-gray-900 text-white"
+                      : "text-gray-500 hover:text-gray-800 hover:bg-gray-50"
+                  } ${i > 0 ? "border-l border-gray-200" : ""}`}
+                >
+                  {l.label}
+                </button>
+              ))}
+            </div>
+            <button
+              onClick={() => scrollTo("#contacts")}
+              className="text-sm font-semibold px-5 py-2 rounded text-white transition-all hover:opacity-90 active:scale-95"
+              style={{ background: "var(--brand-steel)" }}
+            >
+              {t.cta}
+            </button>
+          </div>
 
           <button className="md:hidden p-2 text-gray-700" onClick={() => setMenuOpen(!menuOpen)}>
             <Icon name={menuOpen ? "X" : "Menu"} size={22} />
@@ -192,12 +277,27 @@ export default function Index() {
                 {link.label}
               </button>
             ))}
+            <div className="flex items-center gap-1">
+              {LANGS.map(l => (
+                <button
+                  key={l.code}
+                  onClick={() => setLang(l.code)}
+                  className={`px-3 py-1.5 text-xs font-semibold rounded border transition-colors ${
+                    lang === l.code
+                      ? "bg-gray-900 text-white border-gray-900"
+                      : "text-gray-500 border-gray-200 hover:border-gray-400"
+                  }`}
+                >
+                  {l.label}
+                </button>
+              ))}
+            </div>
             <button
               onClick={() => scrollTo("#contacts")}
-              className="mt-2 text-sm font-semibold px-5 py-2.5 rounded text-white text-center"
+              className="mt-1 text-sm font-semibold px-5 py-2.5 rounded text-white text-center"
               style={{ background: "var(--brand-steel)" }}
             >
-              Получить консультацию
+              {t.cta}
             </button>
           </div>
         )}
@@ -206,10 +306,7 @@ export default function Index() {
       {/* HERO */}
       <section id="home" className="pt-16 min-h-screen flex flex-col relative overflow-hidden">
         <div className="absolute inset-0 hero-grid" />
-        <div
-          className="absolute inset-0"
-          style={{ background: "linear-gradient(135deg, #111827 0%, #1e3a5f 55%, #1e3a8a 100%)" }}
-        />
+        <div className="absolute inset-0" style={{ background: "linear-gradient(135deg, #111827 0%, #1e3a5f 55%, #1e3a8a 100%)" }} />
         <div
           className="absolute inset-0 opacity-25"
           style={{
@@ -218,56 +315,34 @@ export default function Index() {
             backgroundPosition: "center",
           }}
         />
-
         <div className="relative flex-1 flex items-center">
           <div className="max-w-6xl mx-auto px-6 py-24 w-full">
             <div ref={heroAnim.ref} className="max-w-2xl">
               <div
                 className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium mb-8 border opacity-0-init ${heroAnim.inView ? "animate-fade-in-up" : ""}`}
-                style={{
-                  background: "rgba(37,99,235,0.15)",
-                  borderColor: "rgba(59,130,246,0.3)",
-                  color: "#93c5fd",
-                }}
+                style={{ background: "rgba(37,99,235,0.15)", borderColor: "rgba(59,130,246,0.3)", color: "#93c5fd" }}
               >
                 <span className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse" />
-                IT-компания Дальнего Востока
+                {t.heroBadge}
               </div>
-
-              <h1
-                className={`text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6 opacity-0-init ${heroAnim.inView ? "animate-fade-in-up delay-100" : ""}`}
-              >
-                Автоматизируем бизнес,<br />
-                <span style={{ color: "#60a5fa" }}>освобождаем время</span>
+              <h1 className={`text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6 opacity-0-init ${heroAnim.inView ? "animate-fade-in-up delay-100" : ""}`}>
+                {t.heroTitle1}<br />
+                <span style={{ color: "#60a5fa" }}>{t.heroTitle2}</span>
               </h1>
-
-              <p
-                className={`text-lg text-blue-100 leading-relaxed mb-10 max-w-xl opacity-0-init ${heroAnim.inView ? "animate-fade-in-up delay-200" : ""}`}
-              >
-                Комплексные IT-решения для производственных, торговых и сервисных компаний.
-                Внедряем CRM/ERP, поставляем оборудование, строим аналитику — под ключ.
+              <p className={`text-lg text-blue-100 leading-relaxed mb-10 max-w-xl opacity-0-init ${heroAnim.inView ? "animate-fade-in-up delay-200" : ""}`}>
+                {t.heroDesc}
               </p>
-
               <div className={`flex flex-col sm:flex-row gap-4 opacity-0-init ${heroAnim.inView ? "animate-fade-in-up delay-300" : ""}`}>
-                <button
-                  onClick={() => scrollTo("#contacts")}
-                  className="px-8 py-3.5 font-semibold text-white rounded transition-all hover:opacity-90 active:scale-95 text-base"
-                  style={{ background: "var(--brand-blue)" }}
-                >
-                  Получить консультацию
+                <button onClick={() => scrollTo("#contacts")} className="px-8 py-3.5 font-semibold text-white rounded transition-all hover:opacity-90 active:scale-95 text-base" style={{ background: "var(--brand-blue)" }}>
+                  {t.cta}
                 </button>
-                <button
-                  onClick={() => scrollTo("#services")}
-                  className="px-8 py-3.5 font-semibold rounded border text-white transition-all hover:bg-white hover:text-gray-900 text-base"
-                  style={{ borderColor: "rgba(255,255,255,0.3)" }}
-                >
-                  Наши услуги
+                <button onClick={() => scrollTo("#services")} className="px-8 py-3.5 font-semibold rounded border text-white transition-all hover:bg-white hover:text-gray-900 text-base" style={{ borderColor: "rgba(255,255,255,0.3)" }}>
+                  {t.heroBtn2}
                 </button>
               </div>
             </div>
           </div>
         </div>
-
         <div className="relative pb-8 flex justify-center">
           <button onClick={() => scrollTo("#services")} className="text-blue-300 opacity-60 hover:opacity-100 transition-opacity">
             <Icon name="ChevronDown" size={28} />
@@ -275,15 +350,11 @@ export default function Index() {
         </div>
       </section>
 
-      {/* ADVANTAGES STRIP */}
+      {/* ADVANTAGES */}
       <div ref={advantagesAnim.ref} style={{ background: "#f9fafb", borderBottom: "1px solid #e5e7eb" }}>
         <div className="max-w-6xl mx-auto px-6 py-10 grid grid-cols-2 md:grid-cols-4 gap-8">
           {ADVANTAGES.map((adv, i) => (
-            <div
-              key={adv.label}
-              className={`flex flex-col items-center text-center gap-2 opacity-0-init ${advantagesAnim.inView ? "animate-fade-in-up" : ""}`}
-              style={{ animationDelay: `${i * 0.1}s` }}
-            >
+            <div key={adv.label} className={`flex flex-col items-center text-center gap-2 opacity-0-init ${advantagesAnim.inView ? "animate-fade-in-up" : ""}`} style={{ animationDelay: `${i * 0.1}s` }}>
               <div className="w-10 h-10 rounded-full flex items-center justify-center mb-1" style={{ background: "rgba(37,99,235,0.08)" }}>
                 <Icon name={adv.icon} size={20} className="text-blue-600" />
               </div>
@@ -300,23 +371,13 @@ export default function Index() {
           <div ref={servicesAnim.ref}>
             <div className={`mb-14 opacity-0-init ${servicesAnim.inView ? "animate-fade-in-up" : ""}`}>
               <div className="section-line" />
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Направления деятельности</h2>
-              <p className="text-gray-500 text-lg max-w-xl">
-                Комплексный подход к цифровизации бизнеса — от стратегии до технической поддержки.
-              </p>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">{t.servicesTitle}</h2>
+              <p className="text-gray-500 text-lg max-w-xl">{t.servicesDesc}</p>
             </div>
-
             <div className="grid md:grid-cols-2 gap-6">
               {SERVICES.map((svc, i) => (
-                <div
-                  key={svc.title}
-                  className={`service-card border border-gray-200 rounded-lg p-8 cursor-default opacity-0-init ${servicesAnim.inView ? "animate-fade-in-up" : ""}`}
-                  style={{ animationDelay: `${0.1 + i * 0.1}s` }}
-                >
-                  <div
-                    className="w-12 h-12 rounded-lg flex items-center justify-center mb-5"
-                    style={{ background: "rgba(30,58,95,0.08)" }}
-                  >
+                <div key={svc.title} className={`service-card border border-gray-200 rounded-lg p-8 cursor-default opacity-0-init ${servicesAnim.inView ? "animate-fade-in-up" : ""}`} style={{ animationDelay: `${0.1 + i * 0.1}s` }}>
+                  <div className="w-12 h-12 rounded-lg flex items-center justify-center mb-5" style={{ background: "rgba(30,58,95,0.08)" }}>
                     <Icon name={svc.icon} size={24} className="text-blue-700" />
                   </div>
                   <h3 className="text-xl font-bold text-gray-900 mb-3">{svc.title}</h3>
@@ -342,33 +403,26 @@ export default function Index() {
           <div ref={casesAnim.ref}>
             <div className={`mb-14 opacity-0-init ${casesAnim.inView ? "animate-fade-in-up" : ""}`}>
               <div className="section-line" />
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Реализованные проекты</h2>
-              <p className="text-gray-500 text-lg max-w-xl">Измеримые результаты для наших клиентов.</p>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">{t.casesTitle}</h2>
+              <p className="text-gray-500 text-lg max-w-xl">{t.casesDesc}</p>
             </div>
             <div className="grid md:grid-cols-3 gap-6">
               {CASES.map((c, i) => (
-                <div
-                  key={c.industry}
-                  className={`bg-white border border-gray-200 rounded-lg p-7 opacity-0-init ${casesAnim.inView ? "animate-fade-in-up" : ""}`}
-                  style={{ animationDelay: `${0.1 + i * 0.12}s` }}
-                >
-                  <span
-                    className="inline-block text-xs font-semibold px-3 py-1 rounded-full mb-5"
-                    style={{ background: "rgba(37,99,235,0.08)", color: "var(--brand-blue)" }}
-                  >
+                <div key={c.industry} className={`bg-white border border-gray-200 rounded-lg p-7 opacity-0-init ${casesAnim.inView ? "animate-fade-in-up" : ""}`} style={{ animationDelay: `${0.1 + i * 0.12}s` }}>
+                  <span className="inline-block text-xs font-semibold px-3 py-1 rounded-full mb-5" style={{ background: "rgba(37,99,235,0.08)", color: "var(--brand-blue)" }}>
                     {c.industry}
                   </span>
                   <div className="space-y-4 text-sm">
                     <div>
-                      <span className="text-xs font-semibold uppercase tracking-wider text-gray-400">Задача</span>
+                      <span className="text-xs font-semibold uppercase tracking-wider text-gray-400">{t.caseTask}</span>
                       <p className="mt-1 text-gray-700 leading-relaxed">{c.task}</p>
                     </div>
                     <div>
-                      <span className="text-xs font-semibold uppercase tracking-wider text-gray-400">Решение</span>
+                      <span className="text-xs font-semibold uppercase tracking-wider text-gray-400">{t.caseSolution}</span>
                       <p className="mt-1 text-gray-700 leading-relaxed">{c.solution}</p>
                     </div>
                     <div className="pt-2 border-t border-gray-100">
-                      <span className="text-xs font-semibold uppercase tracking-wider text-gray-400">Результат</span>
+                      <span className="text-xs font-semibold uppercase tracking-wider text-gray-400">{t.caseResult}</span>
                       <p className="mt-1 font-semibold text-blue-700 leading-relaxed">{c.result}</p>
                     </div>
                   </div>
@@ -385,28 +439,15 @@ export default function Index() {
           <div ref={aboutAnim.ref}>
             <div className={`mb-14 opacity-0-init ${aboutAnim.inView ? "animate-fade-in-up" : ""}`}>
               <div className="section-line" />
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">О компании</h2>
-              <p className="text-gray-500 text-lg max-w-2xl">
-                «Инновации ДВ» — системный интегратор и IT-партнёр для бизнеса на Дальнем Востоке.
-                С 2014 года помогаем компаниям выстраивать эффективные цифровые процессы.
-              </p>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">{t.aboutTitle}</h2>
+              <p className="text-gray-500 text-lg max-w-2xl">{t.aboutDesc}</p>
             </div>
-
             <div className="grid md:grid-cols-2 gap-16 items-start mb-16">
               <div className={`opacity-0-init ${aboutAnim.inView ? "animate-fade-in-up delay-100" : ""}`}>
-                <h3 className="text-xl font-bold text-gray-900 mb-4">Наша миссия</h3>
-                <p className="text-gray-600 leading-relaxed mb-6">
-                  Делать передовые IT-технологии доступными для любого бизнеса — от небольшой торговой точки
-                  до крупного производственного предприятия. Мы не просто поставляем решения: мы разбираемся
-                  в задачах клиента и предлагаем то, что реально работает.
-                </p>
+                <h3 className="text-xl font-bold text-gray-900 mb-4">{t.missionTitle}</h3>
+                <p className="text-gray-600 leading-relaxed mb-6">{t.missionText}</p>
                 <div className="space-y-3">
-                  {[
-                    "Индивидуальный подход к каждому проекту",
-                    "Прозрачные условия сотрудничества",
-                    "Техническая поддержка после внедрения",
-                    "Работаем по всему Дальневосточному региону"
-                  ].map(item => (
+                  {[t.m1, t.m2, t.m3, t.m4].map(item => (
                     <div key={item} className="flex items-start gap-3">
                       <Icon name="CheckCircle" size={18} className="text-blue-600 mt-0.5 flex-shrink-0" />
                       <span className="text-gray-700 text-sm">{item}</span>
@@ -414,17 +455,13 @@ export default function Index() {
                   ))}
                 </div>
               </div>
-
               <div className={`opacity-0-init ${aboutAnim.inView ? "animate-fade-in-up delay-200" : ""}`}>
-                <h3 className="text-xl font-bold text-gray-900 mb-6">Команда</h3>
+                <h3 className="text-xl font-bold text-gray-900 mb-6">{t.teamTitle}</h3>
                 <div className="space-y-4">
                   {TEAM.map(member => (
                     <div key={member.name} className="flex items-center gap-4 p-4 border border-gray-100 rounded-lg">
-                      <div
-                        className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 font-semibold text-sm text-white"
-                        style={{ background: "var(--brand-steel)" }}
-                      >
-                        {member.name.split(" ").map((n: string) => n[0]).join("")}
+                      <div className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 font-semibold text-sm text-white" style={{ background: "var(--brand-steel)" }}>
+                        {member.name.split(" ").map((n: string) => n[0]).join("").slice(0, 2)}
                       </div>
                       <div>
                         <div className="font-semibold text-gray-900 text-sm">{member.name}</div>
@@ -441,18 +478,18 @@ export default function Index() {
             <div className={`border border-gray-200 rounded-lg p-8 opacity-0-init ${aboutAnim.inView ? "animate-fade-in-up delay-300" : ""}`}>
               <h3 className="text-lg font-bold text-gray-900 mb-5 flex items-center gap-2">
                 <Icon name="FileText" size={18} className="text-gray-400" />
-                Реквизиты организации
+                {t.reqTitle}
               </h3>
               <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-x-8 gap-y-4 text-sm">
                 {[
-                  { label: "Полное наименование", value: "ООО «Инновации ДВ»" },
-                  { label: "ОГРН", value: "1162536055880" },
-                  { label: "ИНН", value: "2543091244" },
-                  { label: "КПП", value: "254301001" },
-                  { label: "ОКПО", value: "00875023" },
-                  { label: "Дата регистрации", value: "3 марта 2016 года" },
-                  { label: "Вид деятельности", value: "Разработка компьютерного программного обеспечения (62.01)" },
-                  { label: "Юридический адрес", value: "690002, Приморский край, г. Владивосток, пр-кт Красного Знамени, д. 59, офис 505" },
+                  { label: t.reqName, value: "ООО «Инновации ДВ»" },
+                  { label: t.reqOgrn, value: "1162536055880" },
+                  { label: t.reqInn, value: "2543091244" },
+                  { label: t.reqKpp, value: "254301001" },
+                  { label: t.reqOkpo, value: "00875023" },
+                  { label: t.reqDate, value: lang === "ru" ? "3 марта 2016 года" : lang === "en" ? "March 3, 2016" : "2016年3月3日" },
+                  { label: t.reqActivity, value: lang === "ru" ? "Разработка компьютерного программного обеспечения (62.01)" : lang === "en" ? "Computer software development (62.01)" : "计算机软件开发 (62.01)" },
+                  { label: t.reqAddress, value: "690002, " + (lang === "ru" ? "Приморский край, г. Владивосток, пр-кт Красного Знамени, д. 59, офис 505" : lang === "en" ? "Primorsky Krai, Vladivostok, Krasnogo Znameni Ave., 59, office 505" : "滨海边疆区，符拉迪沃斯托克，红旗大街59号，505室") },
                 ].map(req => (
                   <div key={req.label}>
                     <div className="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-1">{req.label}</div>
@@ -471,12 +508,9 @@ export default function Index() {
           <div ref={contactsAnim.ref}>
             <div className={`mb-14 opacity-0-init ${contactsAnim.inView ? "animate-fade-in-up" : ""}`}>
               <div className="section-line" />
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Свяжитесь с нами</h2>
-              <p className="text-blue-200 text-lg max-w-xl">
-                Оставьте заявку — ответим в течение рабочего часа.
-              </p>
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">{t.contactsTitle}</h2>
+              <p className="text-blue-200 text-lg max-w-xl">{t.contactsDesc}</p>
             </div>
-
             <div className="grid md:grid-cols-2 gap-12 items-start">
               <div className={`opacity-0-init ${contactsAnim.inView ? "animate-fade-in-up delay-100" : ""}`}>
                 {formSent ? (
@@ -484,78 +518,40 @@ export default function Index() {
                     <div className="w-16 h-16 rounded-full flex items-center justify-center" style={{ background: "var(--brand-blue)" }}>
                       <Icon name="Check" size={32} className="text-white" />
                     </div>
-                    <h3 className="text-xl font-bold text-white">Заявка отправлена!</h3>
-                    <p className="text-blue-200">Мы свяжемся с вами в течение рабочего часа.</p>
-                    <button
-                      onClick={() => setFormSent(false)}
-                      className="mt-2 text-sm text-blue-400 hover:text-blue-300 underline"
-                    >
-                      Отправить ещё
-                    </button>
+                    <h3 className="text-xl font-bold text-white">{t.formSuccessTitle}</h3>
+                    <p className="text-blue-200">{t.formSuccessDesc}</p>
+                    <button onClick={() => setFormSent(false)} className="mt-2 text-sm text-blue-400 hover:text-blue-300 underline">{t.formAgain}</button>
                   </div>
                 ) : (
                   <form onSubmit={handleSubmit} className="space-y-4">
                     <div>
-                      <label className="block text-sm font-medium text-blue-100 mb-1.5">Ваше имя</label>
-                      <input
-                        type="text"
-                        required
-                        placeholder="Иван Иванов"
-                        value={formData.name}
-                        onChange={e => setFormData({ ...formData, name: e.target.value })}
-                        className="w-full px-4 py-3 rounded text-white text-sm border outline-none focus:ring-2 focus:ring-blue-500 placeholder-gray-500 transition"
-                        style={{ background: "rgba(255,255,255,0.06)", borderColor: "rgba(255,255,255,0.12)" }}
-                      />
+                      <label className="block text-sm font-medium text-blue-100 mb-1.5">{t.formName}</label>
+                      <input type="text" required placeholder={lang === "ru" ? "Иван Иванов" : lang === "en" ? "John Smith" : "张三"} value={formData.name} onChange={e => setFormData({ ...formData, name: e.target.value })} className="w-full px-4 py-3 rounded text-white text-sm border outline-none focus:ring-2 focus:ring-blue-500 placeholder-gray-500 transition" style={{ background: "rgba(255,255,255,0.06)", borderColor: "rgba(255,255,255,0.12)" }} />
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-blue-100 mb-1.5">Телефон</label>
-                      <input
-                        type="tel"
-                        required
-                        placeholder="+7 (000) 000-00-00"
-                        value={formData.phone}
-                        onChange={e => setFormData({ ...formData, phone: e.target.value })}
-                        className="w-full px-4 py-3 rounded text-white text-sm border outline-none focus:ring-2 focus:ring-blue-500 placeholder-gray-500 transition"
-                        style={{ background: "rgba(255,255,255,0.06)", borderColor: "rgba(255,255,255,0.12)" }}
-                      />
+                      <label className="block text-sm font-medium text-blue-100 mb-1.5">{t.formPhone}</label>
+                      <input type="tel" required placeholder="+7 (000) 000-00-00" value={formData.phone} onChange={e => setFormData({ ...formData, phone: e.target.value })} className="w-full px-4 py-3 rounded text-white text-sm border outline-none focus:ring-2 focus:ring-blue-500 placeholder-gray-500 transition" style={{ background: "rgba(255,255,255,0.06)", borderColor: "rgba(255,255,255,0.12)" }} />
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-blue-100 mb-1.5">Сообщение</label>
-                      <textarea
-                        rows={4}
-                        placeholder="Опишите вашу задачу..."
-                        value={formData.message}
-                        onChange={e => setFormData({ ...formData, message: e.target.value })}
-                        className="w-full px-4 py-3 rounded text-white text-sm border outline-none focus:ring-2 focus:ring-blue-500 placeholder-gray-500 resize-none transition"
-                        style={{ background: "rgba(255,255,255,0.06)", borderColor: "rgba(255,255,255,0.12)" }}
-                      />
+                      <label className="block text-sm font-medium text-blue-100 mb-1.5">{t.formMsg}</label>
+                      <textarea rows={4} placeholder={t.formMsgPh} value={formData.message} onChange={e => setFormData({ ...formData, message: e.target.value })} className="w-full px-4 py-3 rounded text-white text-sm border outline-none focus:ring-2 focus:ring-blue-500 placeholder-gray-500 resize-none transition" style={{ background: "rgba(255,255,255,0.06)", borderColor: "rgba(255,255,255,0.12)" }} />
                     </div>
-                    <button
-                      type="submit"
-                      className="w-full py-3.5 font-semibold text-white rounded transition-all hover:opacity-90 active:scale-95"
-                      style={{ background: "var(--brand-blue)" }}
-                    >
-                      Отправить заявку
+                    <button type="submit" className="w-full py-3.5 font-semibold text-white rounded transition-all hover:opacity-90 active:scale-95" style={{ background: "var(--brand-blue)" }}>
+                      {t.formBtn}
                     </button>
-                    <p className="text-xs text-gray-500 text-center">
-                      Нажимая кнопку, вы соглашаетесь с политикой конфиденциальности
-                    </p>
+                    <p className="text-xs text-gray-500 text-center">{t.formPolicy}</p>
                   </form>
                 )}
               </div>
-
               <div className={`space-y-6 opacity-0-init ${contactsAnim.inView ? "animate-fade-in-up delay-200" : ""}`}>
                 {[
-                  { icon: "Phone", label: "Телефон", value: "+7 (000) 000-00-00" },
-                  { icon: "Mail", label: "Email", value: "info@innovacii-dv.ru" },
-                  { icon: "MapPin", label: "Адрес", value: "г. Владивосток, ул. Примерная, д. 1" },
-                  { icon: "Clock", label: "Режим работы", value: "Пн–Пт, 09:00–18:00 (VLAT)" },
+                  { icon: "Phone", label: t.cPhone, value: "+7 (000) 000-00-00" },
+                  { icon: "Mail", label: t.cEmail, value: "info@innovacii-dv.ru" },
+                  { icon: "MapPin", label: t.cAddress, value: lang === "ru" ? "г. Владивосток, пр-кт Красного Знамени, д. 59, офис 505" : lang === "en" ? "Vladivostok, Krasnogo Znameni Ave., 59, office 505" : "符拉迪沃斯托克，红旗大街59号，505室" },
+                  { icon: "Clock", label: t.cHours, value: lang === "ru" ? "Пн–Пт, 09:00–18:00 (VLAT)" : lang === "en" ? "Mon–Fri, 09:00–18:00 (VLAT)" : "周一至周五，09:00–18:00 (VLAT)" },
                 ].map(contact => (
                   <div key={contact.label} className="flex items-start gap-4">
-                    <div
-                      className="w-10 h-10 rounded flex items-center justify-center flex-shrink-0 mt-0.5"
-                      style={{ background: "rgba(37,99,235,0.2)" }}
-                    >
+                    <div className="w-10 h-10 rounded flex items-center justify-center flex-shrink-0 mt-0.5" style={{ background: "rgba(37,99,235,0.2)" }}>
                       <Icon name={contact.icon} size={18} className="text-blue-400" />
                     </div>
                     <div>
@@ -579,14 +575,10 @@ export default function Index() {
             </div>
             <span className="text-gray-400 text-sm">Инновации ДВ</span>
           </div>
-          <p className="text-gray-600 text-xs text-center">© 2024 ООО «Инновации ДВ». Все права защищены.</p>
+          <p className="text-gray-600 text-xs text-center">{t.footer}</p>
           <div className="flex gap-6">
             {NAV_LINKS.map(link => (
-              <button
-                key={link.href}
-                onClick={() => scrollTo(link.href)}
-                className="text-xs text-gray-500 hover:text-gray-300 transition-colors"
-              >
+              <button key={link.href} onClick={() => scrollTo(link.href)} className="text-xs text-gray-500 hover:text-gray-300 transition-colors">
                 {link.label}
               </button>
             ))}
