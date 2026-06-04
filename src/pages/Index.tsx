@@ -19,6 +19,7 @@ const T = {
     s2title: "Автоматизация бизнеса", s2desc: "Внедрение CRM и ERP-систем, автоматизация документооборота и складского учёта.", s2i1: "CRM: Битрикс24, amoCRM", s2i2: "ERP-системы", s2i3: "Автоматизация склада (WMS)",
     s3title: "Оборудование и ПО", s3desc: "Поставки кассового и торгового оборудования, лицензионного программного обеспечения.", s3i1: "Онлайн-кассы и ФН", s3i2: "Сканеры, ТСД, принтеры", s3i3: "Лицензионное ПО",
     s4title: "Системы аналитики", s4desc: "Настройка BI-систем, сквозная аналитика, дашборды и отчёты для принятия решений.", s4i1: "BI-системы", s4i2: "Сквозная аналитика", s4i3: "Дашборды для руководства",
+    s5title: "Интеграция с государственными системами", s5desc: "Подключение и настройка обязательных государственных систем для торговых, производственных и логистических компаний.", s5i1: "ГИС МТ (Честный знак)", s5i2: "Меркурий (ветеринарный контроль)", s5i3: "ЭДО (электронный документооборот)", s5i4: "Логистика и транспортные системы",
     casesTitle: "Реализованные проекты", casesDesc: "Измеримые результаты для наших клиентов.",
     caseTask: "Задача", caseSolution: "Решение", caseResult: "Результат",
     c1industry: "Ритейл", c1task: "Разрозненный учёт продаж в 12 магазинах", c1sol: "Внедрение единой ERP + кассовое оборудование", c1res: "−35% времени на инвентаризацию, +18% точность учёта",
@@ -52,6 +53,7 @@ const T = {
     s2title: "Business Automation", s2desc: "CRM and ERP system implementation, document workflow and warehouse management automation.", s2i1: "CRM: Bitrix24, amoCRM", s2i2: "ERP Systems", s2i3: "Warehouse Automation (WMS)",
     s3title: "Equipment & Software", s3desc: "Supply of cash register and retail equipment, licensed software.", s3i1: "Online Cash Registers", s3i2: "Scanners, TSD, Label Printers", s3i3: "Licensed Software",
     s4title: "Analytics Systems", s4desc: "BI system setup, end-to-end analytics, dashboards and reports for management.", s4i1: "BI Systems", s4i2: "End-to-End Analytics", s4i3: "Management Dashboards",
+    s5title: "Government Systems Integration", s5desc: "Connection and configuration of mandatory state systems for retail, manufacturing and logistics companies.", s5i1: "GIS MT (Honest Sign)", s5i2: "Mercury (veterinary control)", s5i3: "EDO (electronic document management)", s5i4: "Logistics & transport systems",
     casesTitle: "Completed Projects", casesDesc: "Measurable results for our clients.",
     caseTask: "Challenge", caseSolution: "Solution", caseResult: "Result",
     c1industry: "Retail", c1task: "Fragmented sales tracking across 12 stores", c1sol: "Unified ERP implementation + cash register equipment", c1res: "−35% inventory time, +18% accounting accuracy",
@@ -85,6 +87,7 @@ const T = {
     s2title: "业务自动化", s2desc: "CRM和ERP系统实施，文档流程和仓库管理自动化。", s2i1: "CRM: Bitrix24, amoCRM", s2i2: "ERP系统", s2i3: "仓库自动化 (WMS)",
     s3title: "设备与软件", s3desc: "收银设备、零售设备及正版软件的供应。", s3i1: "在线收银机", s3i2: "扫描仪、数据采集器、标签打印机", s3i3: "正版软件",
     s4title: "分析系统", s4desc: "BI系统配置、端到端分析、管理层仪表板和报告。", s4i1: "BI系统", s4i2: "端到端分析", s4i3: "管理层仪表板",
+    s5title: "政府系统集成", s5desc: "为零售、生产和物流企业连接和配置强制性国家系统。", s5i1: "GIS МТ（诚信标志）", s5i2: "Меркурий（兽医控制）", s5i3: "ЭДО（电子文档管理）", s5i4: "物流与运输系统",
     casesTitle: "已完成项目", casesDesc: "为客户带来可量化的成果。",
     caseTask: "任务", caseSolution: "解决方案", caseResult: "成果",
     c1industry: "零售", c1task: "12家门店的销售数据分散管理", c1sol: "统一ERP实施 + 收银设备", c1res: "库存时间减少35%，核算准确率提升18%",
@@ -185,6 +188,7 @@ export default function Index() {
     { icon: "Zap", title: t.s2title, desc: t.s2desc, items: [t.s2i1, t.s2i2, t.s2i3] },
     { icon: "Monitor", title: t.s3title, desc: t.s3desc, items: [t.s3i1, t.s3i2, t.s3i3] },
     { icon: "BarChart3", title: t.s4title, desc: t.s4desc, items: [t.s4i1, t.s4i2, t.s4i3] },
+    { icon: "Network", title: t.s5title, desc: t.s5desc, items: [t.s5i1, t.s5i2, t.s5i3, t.s5i4] },
   ];
 
   const ADVANTAGES = [
