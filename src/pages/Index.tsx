@@ -38,6 +38,7 @@ const T = {
     exp3: "Архитектура корпоративных систем",
     reqTitle: "Реквизиты организации",
     reqName: "Полное наименование", reqOgrn: "ОГРН", reqInn: "ИНН", reqKpp: "КПП", reqOkpo: "ОКПО", reqDate: "Дата регистрации", reqActivity: "Вид деятельности", reqAddress: "Юридический адрес",
+    partnersTitle: "Наши партнёры", partnersDesc: "Работаем с ведущими IT-компаниями Дальнего Востока.",
     contactsTitle: "Свяжитесь с нами", contactsDesc: "Оставьте заявку — ответим в течение рабочего часа.",
     formName: "Ваше имя", formPhone: "Телефон", formMsg: "Сообщение", formMsgPh: "Опишите вашу задачу...", formBtn: "Отправить заявку", formPolicy: "Нажимая кнопку, вы соглашаетесь с политикой конфиденциальности",
     formSuccessTitle: "Заявка отправлена!", formSuccessDesc: "Мы свяжемся с вами в течение рабочего часа.", formAgain: "Отправить ещё",
@@ -77,6 +78,7 @@ const T = {
     exp3: "Corporate systems architecture",
     reqTitle: "Company Details",
     reqName: "Full Name", reqOgrn: "OGRN", reqInn: "INN (Tax ID)", reqKpp: "KPP", reqOkpo: "OKPO", reqDate: "Registration Date", reqActivity: "Business Activity", reqAddress: "Legal Address",
+    partnersTitle: "Our Partners", partnersDesc: "We work with leading IT companies of the Russian Far East.",
     contactsTitle: "Contact Us", contactsDesc: "Leave a request — we will respond within one business hour.",
     formName: "Your Name", formPhone: "Phone", formMsg: "Message", formMsgPh: "Describe your task...", formBtn: "Send Request", formPolicy: "By clicking the button, you agree to the privacy policy",
     formSuccessTitle: "Request Sent!", formSuccessDesc: "We will contact you within one business hour.", formAgain: "Send Another",
@@ -116,6 +118,7 @@ const T = {
     exp3: "企业系统架构",
     reqTitle: "公司信息",
     reqName: "全称", reqOgrn: "ОГРН（统一国家法人注册号）", reqInn: "ИНН（纳税人识别号）", reqKpp: "КПП", reqOkpo: "ОКПО", reqDate: "注册日期", reqActivity: "业务活动", reqAddress: "法定地址",
+    partnersTitle: "我们的合作伙伴", partnersDesc: "与远东领先IT公司合作。",
     contactsTitle: "联系我们", contactsDesc: "提交申请——我们将在一个工作小时内回复。",
     formName: "您的姓名", formPhone: "电话", formMsg: "留言", formMsgPh: "请描述您的需求...", formBtn: "提交申请", formPolicy: "点击按钮即表示您同意隐私政策",
     formSuccessTitle: "申请已发送！", formSuccessDesc: "我们将在一个工作小时内与您联系。", formAgain: "再次发送",
@@ -172,6 +175,7 @@ export default function Index() {
   const casesAnim = useInView(0.1);
   const advantagesAnim = useInView(0.1);
   const aboutAnim = useInView(0.1);
+  const partnersAnim = useInView(0.1);
   const contactsAnim = useInView(0.1);
 
   useEffect(() => {
@@ -582,6 +586,40 @@ export default function Index() {
                   </div>
                 ))}
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* PARTNERS */}
+      <section id="partners" className="py-20 bg-white">
+        <div className="max-w-6xl mx-auto px-6">
+          <div ref={partnersAnim.ref}>
+            <div className={`mb-12 opacity-0-init ${partnersAnim.inView ? "animate-fade-in-up" : ""}`}>
+              <div className="section-line" />
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">{t.partnersTitle}</h2>
+              <p className="text-gray-500 text-lg max-w-xl">{t.partnersDesc}</p>
+            </div>
+            <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+              {[
+                { name: "Созвездие", sub: "Владивосток" },
+                { name: "Кливерен", sub: "" },
+                { name: "Моби С", sub: "" },
+                { name: "Скан Софт", sub: "" },
+                { name: "Элемент ДВ", sub: "" },
+              ].map((p, i) => (
+                <div
+                  key={p.name}
+                  className={`flex flex-col items-center justify-center text-center border border-gray-200 rounded-xl px-4 py-8 hover:border-blue-300 hover:shadow-sm transition-all opacity-0-init ${partnersAnim.inView ? "animate-fade-in-up" : ""}`}
+                  style={{ animationDelay: `${0.05 + i * 0.08}s` }}
+                >
+                  <div className="w-12 h-12 rounded-full flex items-center justify-center mb-3" style={{ background: "rgba(37,99,235,0.07)" }}>
+                    <Icon name="Handshake" size={22} className="text-blue-600" />
+                  </div>
+                  <span className="font-bold text-gray-900 text-sm leading-snug">{p.name}</span>
+                  {p.sub && <span className="text-xs text-gray-400 mt-0.5">{p.sub}</span>}
+                </div>
+              ))}
             </div>
           </div>
         </div>
