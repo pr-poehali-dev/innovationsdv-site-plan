@@ -607,7 +607,7 @@ export default function Index() {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               {[
                 { name: "Созвездие", sub: "Владивосток", logo: "https://www.szv.ru/images/logo.png" },
-                { name: "Клеверенс", sub: "", logo: "https://cdn.poehali.dev/projects/dc952390-4837-45eb-b79b-467f972bc182/files/9c3a870e-635c-4a3f-a5eb-b2ac075ae8c9.jpg" },
+                { name: "Клеверенс", sub: "", logo: "https://cdn.poehali.dev/projects/dc952390-4837-45eb-b79b-467f972bc182/bucket/f6eaf21b-89f0-4fb0-88b4-afe3a1fe6c84.jpg" },
                 { name: "Моби-С", sub: "", logo: "https://mobi-c.ru/images/logo.png" },
                 { name: "ScanSoft", sub: "", logo: "https://cdn.poehali.dev/projects/dc952390-4837-45eb-b79b-467f972bc182/files/3fe1ded6-fd26-4a65-9d52-2afcdde27460.jpg" },
                 { name: "Элемент ДВ", sub: "", logo: "https://cdn.poehali.dev/projects/dc952390-4837-45eb-b79b-467f972bc182/files/0e67bc59-5976-47a3-b564-69b8bb87dbaf.jpg" },
