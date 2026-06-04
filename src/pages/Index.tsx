@@ -39,6 +39,7 @@ const T = {
     reqTitle: "Реквизиты организации",
     reqName: "Полное наименование", reqOgrn: "ОГРН", reqInn: "ИНН", reqKpp: "КПП", reqOkpo: "ОКПО", reqDate: "Дата регистрации", reqActivity: "Вид деятельности", reqAddress: "Юридический адрес",
     partnersTitle: "Наши партнёры", partnersDesc: "Работаем с ведущими IT-компаниями Дальнего Востока.",
+    clientsTitle: "Нашему опыту доверяют", clientsDesc: "Компании, которые уже работают с нами.",
     contactsTitle: "Свяжитесь с нами", contactsDesc: "Оставьте заявку — ответим в течение рабочего часа.",
     formName: "Ваше имя", formPhone: "Телефон", formMsg: "Сообщение", formMsgPh: "Опишите вашу задачу...", formBtn: "Отправить заявку", formPolicy: "Нажимая кнопку, вы соглашаетесь с политикой конфиденциальности",
     formSuccessTitle: "Заявка отправлена!", formSuccessDesc: "Мы свяжемся с вами в течение рабочего часа.", formAgain: "Отправить ещё",
@@ -79,6 +80,7 @@ const T = {
     reqTitle: "Company Details",
     reqName: "Full Name", reqOgrn: "OGRN", reqInn: "INN (Tax ID)", reqKpp: "KPP", reqOkpo: "OKPO", reqDate: "Registration Date", reqActivity: "Business Activity", reqAddress: "Legal Address",
     partnersTitle: "Our Partners", partnersDesc: "We work with leading IT companies of the Russian Far East.",
+    clientsTitle: "Trusted by Our Clients", clientsDesc: "Companies that already work with us.",
     contactsTitle: "Contact Us", contactsDesc: "Leave a request — we will respond within one business hour.",
     formName: "Your Name", formPhone: "Phone", formMsg: "Message", formMsgPh: "Describe your task...", formBtn: "Send Request", formPolicy: "By clicking the button, you agree to the privacy policy",
     formSuccessTitle: "Request Sent!", formSuccessDesc: "We will contact you within one business hour.", formAgain: "Send Another",
@@ -119,6 +121,7 @@ const T = {
     reqTitle: "公司信息",
     reqName: "全称", reqOgrn: "ОГРН（统一国家法人注册号）", reqInn: "ИНН（纳税人识别号）", reqKpp: "КПП", reqOkpo: "ОКПО", reqDate: "注册日期", reqActivity: "业务活动", reqAddress: "法定地址",
     partnersTitle: "我们的合作伙伴", partnersDesc: "与远东领先IT公司合作。",
+    clientsTitle: "信任我们的客户", clientsDesc: "已与我们合作的公司。",
     contactsTitle: "联系我们", contactsDesc: "提交申请——我们将在一个工作小时内回复。",
     formName: "您的姓名", formPhone: "电话", formMsg: "留言", formMsgPh: "请描述您的需求...", formBtn: "提交申请", formPolicy: "点击按钮即表示您同意隐私政策",
     formSuccessTitle: "申请已发送！", formSuccessDesc: "我们将在一个工作小时内与您联系。", formAgain: "再次发送",
@@ -176,6 +179,7 @@ export default function Index() {
   const advantagesAnim = useInView(0.1);
   const aboutAnim = useInView(0.1);
   const partnersAnim = useInView(0.1);
+  const clientsAnim = useInView(0.1);
   const contactsAnim = useInView(0.1);
 
   useEffect(() => {
@@ -618,6 +622,43 @@ export default function Index() {
                   <img src={p.logo} alt={p.name} className="h-14 w-full object-contain mb-3" />
                   <span className="font-semibold text-gray-700 text-xs leading-snug">{p.name}</span>
                   {p.sub && <span className="text-xs text-gray-400 mt-0.5">{p.sub}</span>}
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CLIENTS */}
+      <section id="clients" className="py-20" style={{ background: "#f8f9fa" }}>
+        <div className="max-w-6xl mx-auto px-6">
+          <div ref={clientsAnim.ref}>
+            <div className={`mb-12 opacity-0-init ${clientsAnim.inView ? "animate-fade-in-up" : ""}`}>
+              <div className="section-line" />
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">{t.clientsTitle}</h2>
+              <p className="text-gray-500 text-lg max-w-xl">{t.clientsDesc}</p>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+              {[
+                { name: "ООО ГК Движение", sphere: "Транспорт и логистика", logo: "https://cdn.poehali.dev/projects/dc952390-4837-45eb-b79b-467f972bc182/files/ee49d881-7424-4403-ab75-74be8a1a71ea.jpg" },
+                { name: "ООО ДК-Групп", sphere: "Оптовая торговля", logo: "https://cdn.poehali.dev/projects/dc952390-4837-45eb-b79b-467f972bc182/files/df22a920-6959-4663-919e-391267bef15e.jpg" },
+                { name: "ООО КосмоСити", sphere: "Розничная торговля", logo: "https://cdn.poehali.dev/projects/dc952390-4837-45eb-b79b-467f972bc182/files/6fe2b0ee-e2c0-4635-8f37-6334e5e59db2.jpg" },
+              ].map((c, i) => (
+                <div
+                  key={c.name}
+                  className={`bg-white border border-gray-200 rounded-xl p-6 flex items-center gap-5 hover:shadow-md hover:border-blue-200 transition-all opacity-0-init ${clientsAnim.inView ? "animate-fade-in-up" : ""}`}
+                  style={{ animationDelay: `${0.1 + i * 0.1}s` }}
+                >
+                  <div className="w-16 h-16 rounded-lg border border-gray-100 flex-shrink-0 overflow-hidden bg-white flex items-center justify-center">
+                    <img src={c.logo} alt={c.name} className="w-full h-full object-contain p-1" />
+                  </div>
+                  <div>
+                    <div className="font-bold text-gray-900 text-sm leading-snug">{c.name}</div>
+                    <div className="text-xs text-gray-400 mt-1 flex items-center gap-1.5">
+                      <span className="w-1.5 h-1.5 rounded-full inline-block flex-shrink-0" style={{ background: "var(--brand-blue)" }} />
+                      {c.sphere}
+                    </div>
+                  </div>
                 </div>
               ))}
             </div>
