@@ -604,25 +604,29 @@ export default function Index() {
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">{t.partnersTitle}</h2>
               <p className="text-gray-500 text-lg max-w-xl">{t.partnersDesc}</p>
             </div>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
               {[
-                { name: "Созвездие", sub: "Владивосток", logo: "https://www.szv.ru/images/logo.png" },
-                { name: "Клеверенс", sub: "", logo: "https://cdn.poehali.dev/projects/dc952390-4837-45eb-b79b-467f972bc182/bucket/f6eaf21b-89f0-4fb0-88b4-afe3a1fe6c84.jpg" },
-                { name: "Моби-С", sub: "", logo: "https://mobi-c.ru/images/logo.png" },
-                { name: "ScanSoft", sub: "", logo: "https://cdn.poehali.dev/projects/dc952390-4837-45eb-b79b-467f972bc182/bucket/477b5182-febb-4de9-aaec-c5f2d96c12bb.jpg" },
-                { name: "Элемент ДВ", sub: "", logo: "https://cdn.poehali.dev/projects/dc952390-4837-45eb-b79b-467f972bc182/files/0e67bc59-5976-47a3-b564-69b8bb87dbaf.jpg" },
-                { name: "Битрикс24", sub: "", logo: "https://www.bitrix24.ru/bitrix/templates/bitrix24new_landing/img/logo_dark.svg" },
-                { name: "1С", sub: "", logo: "https://1c.ru/img/1c_logo.png" },
-                { name: "Техно-ДВ", sub: "", logo: "https://tehno-dv.ru/images/logos/8/LogoTehnoDV-55_1ekt-z6.png" },
+                { name: "Созвездие", desc: "Консалтинг и автоматизация на базе 1С. Владивосток", logo: "https://www.szv.ru/images/logo.png" },
+                { name: "Клеверенс", desc: "ПО для складской автоматизации и маркировки на ТСД", logo: "https://cdn.poehali.dev/projects/dc952390-4837-45eb-b79b-467f972bc182/bucket/f6eaf21b-89f0-4fb0-88b4-afe3a1fe6c84.jpg" },
+                { name: "Моби-С", desc: "Мобильная торговля и автоматизация торговых представителей", logo: "https://mobi-c.ru/images/logo.png" },
+                { name: "ScanSoft", desc: "Мобильные решения для склада, магазина и маркировки", logo: "https://cdn.poehali.dev/projects/dc952390-4837-45eb-b79b-467f972bc182/bucket/477b5182-febb-4de9-aaec-c5f2d96c12bb.jpg" },
+                { name: "Элемент ДВ", desc: "Автоматизация торговли и общепита на Дальнем Востоке", logo: "https://cdn.poehali.dev/projects/dc952390-4837-45eb-b79b-467f972bc182/files/0e67bc59-5976-47a3-b564-69b8bb87dbaf.jpg" },
+                { name: "Битрикс24", desc: "CRM-система, корпоративный портал и управление задачами", logo: "https://cdn.poehali.dev/projects/dc952390-4837-45eb-b79b-467f972bc182/bucket/eee62951-8251-46d6-b59d-a99596247c54.png" },
+                { name: "1С", desc: "Платформа для автоматизации учёта, ERP и отраслевых решений", logo: "https://cdn.poehali.dev/projects/dc952390-4837-45eb-b79b-467f972bc182/bucket/0655e969-9685-40c9-b633-ffadc28cc658.jpg" },
+                { name: "Техно-ДВ", desc: "Кассовое и торговое оборудование для автоматизации бизнеса", logo: "https://tehno-dv.ru/images/logos/8/LogoTehnoDV-55_1ekt-z6.png" },
               ].map((p, i) => (
                 <div
                   key={p.name}
-                  className={`flex flex-col items-center justify-center text-center border border-gray-200 rounded-xl px-4 py-6 hover:border-blue-300 hover:shadow-sm transition-all opacity-0-init ${partnersAnim.inView ? "animate-fade-in-up" : ""}`}
+                  className={`flex flex-col items-center text-center border border-gray-200 rounded-xl p-5 hover:border-blue-300 hover:shadow-sm transition-all opacity-0-init ${partnersAnim.inView ? "animate-fade-in-up" : ""}`}
                   style={{ animationDelay: `${0.05 + i * 0.08}s` }}
                 >
-                  <img src={p.logo} alt={p.name} className="h-14 w-full object-contain mb-3" />
-                  <span className="font-semibold text-gray-700 text-xs leading-snug">{p.name}</span>
-                  {p.sub && <span className="text-xs text-gray-400 mt-0.5">{p.sub}</span>}
+                  <div className="w-full h-16 flex items-center justify-center mb-4 flex-shrink-0">
+                    <img src={p.logo} alt={p.name} className="max-h-16 max-w-full object-contain" />
+                  </div>
+                  <div className="border-t border-gray-100 pt-3 w-full">
+                    <div className="font-bold text-gray-800 text-sm mb-1">{p.name}</div>
+                    <div className="text-xs text-gray-400 leading-relaxed">{p.desc}</div>
+                  </div>
                 </div>
               ))}
             </div>
