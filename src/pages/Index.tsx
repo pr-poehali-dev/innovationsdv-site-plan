@@ -754,7 +754,7 @@ export default function Index() {
                   { icon: "Phone", label: t.cPhone, value: "+7 (924) 263-09-21, +7 (924) 327-07-08" },
                   { icon: "Mail", label: t.cEmail, value: "office@intdv.ru" },
                   { icon: "MapPin", label: t.cAddress, value: lang === "ru" ? "г. Владивосток, пр-кт Красного Знамени, д. 59, офис 505" : lang === "en" ? "Vladivostok, Krasnogo Znameni Ave., 59, office 505" : "符拉迪沃斯托克，红旗大街59号，505室" },
-                  { icon: "Clock", label: t.cHours, value: lang === "ru" ? "Пн–Пт, 09:00–18:00 (VLAT)" : lang === "en" ? "Mon–Fri, 09:00–18:00 (VLAT)" : "周一至周五，09:00–18:00 (VLAT)" },
+                  { icon: "Clock", label: t.cHours, value: lang === "ru" ? "Пн–Пт, 09:00–18:00 (VDK)" : lang === "en" ? "Mon–Fri, 09:00–18:00 (VDK)" : "周一至周五，09:00–18:00 (VDK)" },
                 ].map(contact => (
                   <div key={contact.label} className="flex items-start gap-4">
                     <div className="w-10 h-10 rounded flex items-center justify-center flex-shrink-0 mt-0.5" style={{ background: "rgba(37,99,235,0.2)" }}>
