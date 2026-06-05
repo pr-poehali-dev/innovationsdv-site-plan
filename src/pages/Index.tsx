@@ -257,10 +257,10 @@ export default function Index() {
 
       {/* NAVBAR */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-gray-200">
-        <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+        <div className="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
           <button onClick={() => scrollTo("#home")} className="flex items-center gap-3">
-            <img src="https://cdn.poehali.dev/projects/dc952390-4837-45eb-b79b-467f972bc182/bucket/7aa12506-b7f6-44f3-839d-02f6d17b2070.jpg" alt="Инновации ДВ" className="w-11 h-11 rounded-lg object-contain" />
-            <span className="font-bold text-gray-900 text-lg tracking-tight" style={{ fontFamily: "'IBM Plex Mono', monospace" }}>Инновации ДВ</span>
+            <img src="https://cdn.poehali.dev/projects/dc952390-4837-45eb-b79b-467f972bc182/bucket/7aa12506-b7f6-44f3-839d-02f6d17b2070.jpg" alt="Инновации ДВ" className="w-14 h-14 rounded-xl object-contain drop-shadow-md" />
+            <span className="font-extrabold text-gray-900 text-xl tracking-tight" style={{ fontFamily: "'IBM Plex Mono', monospace" }}>Инновации ДВ</span>
           </button>
 
           <nav className="hidden md:flex items-center gap-8">
