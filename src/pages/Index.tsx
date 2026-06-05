@@ -34,8 +34,8 @@ const T = {
     missionTitle: "Наша миссия", missionText: "Делать передовые IT-технологии доступными для любого бизнеса — от небольшой торговой точки до крупного производственного предприятия. Мы не просто поставляем решения: мы разбираемся в задачах клиента и предлагаем то, что реально работает.",
     m1: "Индивидуальный подход к каждому проекту", m2: "Прозрачные условия сотрудничества", m3: "Техническая поддержка после внедрения", m4: "Работаем по всему Дальневосточному региону",
     teamTitle: "Команда",
-    role1: "Генеральный директор", role2: "Руководитель проектов", role3: "Технический директор",
-    exp3: "Архитектура корпоративных систем",
+    role1: "Генеральный директор", role2: "Руководитель проектов", role3: "Эксперт по торговому оборудованию",
+    exp3: "Работа с торговым оборудованием",
     reqTitle: "Реквизиты организации",
     reqName: "Полное наименование", reqOgrn: "ОГРН", reqInn: "ИНН", reqKpp: "КПП", reqOkpo: "ОКПО", reqDate: "Дата регистрации", reqActivity: "Вид деятельности", reqAddress: "Юридический адрес",
     partnersTitle: "Наши партнёры", partnersDesc: "Работаем с ведущими IT-компаниями Дальнего Востока.",
@@ -75,8 +75,8 @@ const T = {
     missionTitle: "Our Mission", missionText: "Making advanced IT technologies accessible to any business — from a small retail shop to a large manufacturing enterprise. We don't just deliver solutions: we understand the client's needs and offer what truly works.",
     m1: "Individual approach to each project", m2: "Transparent terms of cooperation", m3: "Technical support after implementation", m4: "Operating across the entire Far Eastern region",
     teamTitle: "Our Team",
-    role1: "CEO", role2: "Project Manager", role3: "CTO",
-    exp3: "Corporate systems architecture",
+    role1: "CEO", role2: "Project Manager", role3: "Trade Equipment Expert",
+    exp3: "Work with trade equipment",
     reqTitle: "Company Details",
     reqName: "Full Name", reqOgrn: "OGRN", reqInn: "INN (Tax ID)", reqKpp: "KPP", reqOkpo: "OKPO", reqDate: "Registration Date", reqActivity: "Business Activity", reqAddress: "Legal Address",
     partnersTitle: "Our Partners", partnersDesc: "We work with leading IT companies of the Russian Far East.",
@@ -116,8 +116,8 @@ const T = {
     missionTitle: "我们的使命", missionText: "让先进的IT技术惠及各类企业——从小型零售店到大型制造企业。我们不只是提供解决方案：我们深入了解客户需求，提供真正有效的方案。",
     m1: "针对每个项目的个性化方法", m2: "透明的合作条款", m3: "实施后的技术支持", m4: "服务覆盖整个远东地区",
     teamTitle: "团队",
-    role1: "总经理", role2: "项目经理", role3: "技术总监",
-    exp3: "企业系统架构",
+    role1: "总经理", role2: "项目经理", role3: "贸易设备专家",
+    exp3: "贸易设备工作",
     reqTitle: "公司信息",
     reqName: "全称", reqOgrn: "ОГРН（统一国家法人注册号）", reqInn: "ИНН（纳税人识别号）", reqKpp: "КПП", reqOkpo: "ОКПО", reqDate: "注册日期", reqActivity: "业务活动", reqAddress: "法定地址",
     partnersTitle: "我们的合作伙伴", partnersDesc: "与远东领先IT公司合作。",
@@ -238,7 +238,7 @@ export default function Index() {
   const TEAM = [
     { name: "Коваль Антон Геннадьевич", role: t.role1, exp: "20 " + (lang === "ru" ? "лет в IT-отрасли" : lang === "en" ? "years in IT" : "年IT行业经验") },
     { name: "Абаимов Вячеслав Вячеславович", role: t.role2, exp: lang === "ru" ? "Эксперт по внедрению ГИС МТ, ЭДО, Меркурий" : lang === "en" ? "Expert in GIS MT, EDO, Mercury implementation" : "GIS MT、EDO、Mercury实施专家" },
-    { name: "Дмитрий Ким", role: t.role3, exp: t.exp3 },
+    { name: "Турков Владислав Игоревич", role: t.role3, exp: t.exp3 },
   ];
 
   const CASES = [
