@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import Icon from "@/components/ui/icon";
+import ChatWidget from "@/components/ChatWidget";
 
 type Lang = "ru" | "en" | "zh";
 
@@ -792,6 +793,7 @@ export default function Index() {
           </div>
         </div>
       </footer>
+      <ChatWidget lang={lang} />
     </div>
   );
 }
