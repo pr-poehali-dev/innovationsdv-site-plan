@@ -663,7 +663,7 @@ export default function Index() {
             {(() => {
                 const CLIENTS = [
                   { name: "ООО ГК Движение", sphere: "Оптовая торговля продуктами питания и бакалейной продукцией", logo: "https://cdn.poehali.dev/projects/dc952390-4837-45eb-b79b-467f972bc182/bucket/9e0c465b-c1ba-4420-a4a0-62d82850750c.jpg", bg: "" },
-                  { name: "ООО ДК-Групп", sphere: "Оптовая торговля", logo: "https://dk-group.shop/templates/dkgroupoil/assets/img/logo.svg", bg: "#1a1a2e" },
+                  { name: "ООО ДК-Групп", sphere: "Оптовая торговля автомобильными маслами", logo: "https://dk-group.shop/templates/dkgroupoil/assets/img/logo.svg", bg: "#1a1a2e" },
                   { name: "ООО КосмоСити", sphere: "Оптовая торговля косметикой", logo: "https://cdn.poehali.dev/projects/dc952390-4837-45eb-b79b-467f972bc182/bucket/82849593-cc92-4959-9845-56937defc854.jpg", bg: "" },
                   { name: "Черчилль Тобакко", sphere: "Оптовая торговля табачной продукцией", logo: "https://cdn.poehali.dev/projects/dc952390-4837-45eb-b79b-467f972bc182/bucket/cca712a1-bbbd-4bee-bd74-1266bf3d060d.jpeg", bg: "" },
                   { name: "Хорольский молочный завод", sphere: "Производство молочной продукции", logo: "https://cdn.poehali.dev/projects/dc952390-4837-45eb-b79b-467f972bc182/bucket/a16e3313-563b-44f8-b503-d3dc90f87389.jpg", bg: "" },
