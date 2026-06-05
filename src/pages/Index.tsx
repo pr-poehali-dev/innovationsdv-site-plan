@@ -259,9 +259,7 @@ export default function Index() {
       <header className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-gray-200">
         <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
           <button onClick={() => scrollTo("#home")} className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded flex items-center justify-center" style={{ background: "var(--brand-steel)" }}>
-              <span className="text-white font-bold text-sm" style={{ fontFamily: "'IBM Plex Mono', monospace" }}>ИД</span>
-            </div>
+            <img src="https://cdn.poehali.dev/projects/dc952390-4837-45eb-b79b-467f972bc182/bucket/7aa12506-b7f6-44f3-839d-02f6d17b2070.jpg" alt="Инновации ДВ" className="w-8 h-8 rounded object-contain" />
             <span className="font-semibold text-gray-900 text-[15px] tracking-tight">Инновации ДВ</span>
           </button>
 
@@ -778,9 +776,7 @@ export default function Index() {
       <footer className="border-t py-8" style={{ background: "#0c1219", borderColor: "rgba(255,255,255,0.06)" }}>
         <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2.5">
-            <div className="w-6 h-6 rounded flex items-center justify-center" style={{ background: "var(--brand-steel)" }}>
-              <span className="text-white font-bold text-[10px]" style={{ fontFamily: "'IBM Plex Mono', monospace" }}>ИД</span>
-            </div>
+            <img src="https://cdn.poehali.dev/projects/dc952390-4837-45eb-b79b-467f972bc182/bucket/7aa12506-b7f6-44f3-839d-02f6d17b2070.jpg" alt="Инновации ДВ" className="w-6 h-6 rounded object-contain" />
             <span className="text-gray-400 text-sm">Инновации ДВ</span>
           </div>
           <p className="text-gray-600 text-xs text-center">{t.footer}</p>
